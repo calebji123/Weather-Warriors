@@ -8,7 +8,7 @@ A multiplayer trading card game with variability based on weather, temperature a
 Upon starting, there is an arena, each player's hand and each player's deck. One player wins when the other player's health reaches zero.
 
 ## API
-(Open Weather current weather API)[https://openweathermap.org/current]
+[Open Weather current weather API](https://openweathermap.org/current)
 
 a screenshot of using a tool to try out the API (like https://www.postman.com/Links to an external site. or https://hoppscotch.io/Links to an external site.Links to an external site.)
 
