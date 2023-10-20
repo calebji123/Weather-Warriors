@@ -1,0 +1,47 @@
+@startuml
+!pragma layout smetana
+
+class GameView
+
+class AttackController
+
+interface AttackInputBoundary
+
+class AttackInputData
+
+class AttackUseCaseInteractor
+
+class AttackOutputData
+
+interface AttackOutputBoundary
+
+class AttackPresenter
+
+class AttackViewModel
+
+class AttackEntity
+
+GameView --> AttackController
+GameView --> AttackViewModel
+
+AttackController --> AttackInputBoundary
+
+AttackController --> AttackInputData
+
+AttackUseCaseInteractor --|> AttackInputBoundary
+
+AttackUseCaseInteractor --> AttackInputData
+
+AttackUseCaseInteractor --> AttackOutputBoundary
+
+AttackUseCaseInteractor --> AttackOutputData
+
+AttackUseCaseInteractor --> AttackEntity
+
+AttackPresenter --|> AttackOutputBoundary
+
+AttackPresenter --> AttackViewModel
+
+
+
+@enduml
