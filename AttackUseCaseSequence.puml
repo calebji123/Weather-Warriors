@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actionPerformed -> AttackController: Codify button press
+AttackController -> AttackUseCaseInteractor: Push action
+AttackUseCaseInteractor -> dataAccessObject: Call relevant cards
+dataAccessObject -> Entity: Build relevant Entity (e.g. active cards)
+AttackUseCaseInteractor -> Entity: change enemy Hp
+AttackUseCaseInteractor -> Entity: check game state
+AttackUseCaseInteractor -> Entity: change allied hp based on enemy attack
+Entity -> AttackUseCaseInteractor: report game state
+AttackUseCaseInteractor -> Presenter: give report
+Presenter -> viewModel: Show User results of turn
+AttackUseCaseInteractor -> dataAccessObject: Save turn results to database and game logs
+
+
+
+
+
+
+@enduml
