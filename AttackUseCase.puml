@@ -21,8 +21,8 @@ class AttackViewModel
 
 class AttackEntity
 
-GameView --> AttackController
-GameView --> AttackViewModel
+GameView -down-> AttackController
+GameView -down-> AttackViewModel
 
 AttackController --> AttackInputBoundary
 
@@ -37,6 +37,9 @@ AttackUseCaseInteractor --> AttackOutputBoundary
 AttackUseCaseInteractor --> AttackOutputData
 
 AttackUseCaseInteractor --> AttackEntity
+AttackUseCaseInteractor --> OpponentEntity
+AttackUseCaseInteractor --> CardEntity
+AttackUseCaseInteractor --> GameEntity
 
 AttackPresenter --|> AttackOutputBoundary
 
