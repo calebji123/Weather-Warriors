@@ -18,6 +18,7 @@ public class Card {
         this.HP = hp;
     }
 
+
     public String getCardName(){return CardName;}
     public Integer getHP(){return HP;}
     public Boolean getDeathStatus(){return isDead;}
