@@ -1,7 +1,7 @@
 package data_access;
 import java.io.*;
 public class HowToPlayDataAccess {
-    private String outputText = "";
+    private final String outputText;
     public HowToPlayDataAccess() throws IOException{
         String filepath = "src/data_files/HowToPlay";
         File howToPlay = new File(filepath);
