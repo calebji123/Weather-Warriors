@@ -1,6 +1,8 @@
 package data_access;
+import use_case.how_to_play.HowToPlayDataAccessInterface;
+
 import java.io.*;
-public class HowToPlayDataAccess {
+public class HowToPlayDataAccess implements HowToPlayDataAccessInterface {
     private final String outputText;
     public HowToPlayDataAccess() throws IOException{
         String filepath = "src/data_files/HowToPlay";
@@ -9,13 +11,15 @@ public class HowToPlayDataAccess {
             StringBuilder output = new StringBuilder();
             String row;
             while ((row = reader.readLine()) != null){
+                row = "\r\n" + row;
                 output.append(row);
+                System.out.println(row);
             }
             this.outputText = output.toString();
         }
     }
 
-    public String getOutputText() {
+    public String getHowToPlay() {
         return outputText;
     }
 }

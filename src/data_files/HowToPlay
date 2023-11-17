@@ -1,2 +1,18 @@
 How to play:
 
+You have an active card and a deck of inactive cards. On the bottom right you can see the next card in the deck.
+
+You can either attack with your active card or swap it with the next card in the deck.
+
+Each card has two moves: a basic move and a special move.
+
+The special move is modified by the weather. The weather is queried based on the location chosen, which is chosen at random at the beginning of the game and after every three moves
+
+The weather and temperature as well as the next location is shown in the top left.
+
+All the turn actions are in the bottom left.
+
+The game ends when you run out of cards in your deck or you defeat the boss.
+
+After every turn the boss moves by doing one of its attacks.
+
