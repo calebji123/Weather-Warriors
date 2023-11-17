@@ -1,10 +1,10 @@
 package use_case.attack;
 
 public class AttackInteractor implements AttackInputBoundary{
-    final AttackUserDataAccessInterface userDataAccessObject;
+    final AttackDataAccessObject userDataAccessObject;
     final AttackOutputBoundary attackPresenter;
 
-    public AttackInteractor(AttackUserDataAccessInterface userDataAccessObject, AttackOutputBoundary attackPresenter) {
+    public AttackInteractor(AttackDataAccessObject userDataAccessObject, AttackOutputBoundary attackPresenter) {
         this.userDataAccessObject = userDataAccessObject;
         this.attackPresenter = attackPresenter;
     }
