@@ -4,7 +4,6 @@ import interface_adaptor.how_to_play.HowToPlayState;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
