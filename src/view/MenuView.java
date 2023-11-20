@@ -19,6 +19,8 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
 
     private final JButton howToPlay;
 
+    private final JButton howToPlayFrench;
+
     private final JButton start;
 
     public MenuView(HowToPlayController howToPlayController, HowToPlayViewModel howToPlayViewModel) {
@@ -32,6 +34,8 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
         JPanel buttons = new JPanel();
         howToPlay = new JButton(HowToPlayViewModel.BUTTON_LABEL);
         buttons.add(howToPlay);
+        howToPlayFrench = new JButton("Comment jouer");
+        buttons.add(howToPlayFrench);
         start = new JButton("Start");
         buttons.add(start);
 
@@ -40,7 +44,20 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource().equals(howToPlay)) {
-                        howToPlayController.execute();
+                        howToPlayController.execute("en");
+
+                        JOptionPane.showMessageDialog(null, howToPlayViewModel.getState().getMessage());
+                    }
+                }
+            }
+        );
+
+        howToPlayFrench.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource().equals(howToPlayFrench)) {
+                        howToPlayController.execute("FR");
 
                         JOptionPane.showMessageDialog(null, howToPlayViewModel.getState().getMessage());
                     }
