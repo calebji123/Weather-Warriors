@@ -32,7 +32,13 @@ class HowToPlayInteractorTest {
 
     @Test
     void execute() {
-        this.interactor.execute("en");
+        this.interactor.execute("EN");
         assertEquals("Hello", viewModel.getState().getMessage());
+    }
+
+    @Test
+    void executeWithLang() {
+        this.interactor.execute("FR");
+        assertEquals("Bonjour", viewModel.getState().getMessage());
     }
 }

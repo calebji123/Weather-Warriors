@@ -3,8 +3,6 @@ package api;
 import okhttp3.OkHttpClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
-
 public class TranslateAPI {
     public static class TranslationResponse {
         private Translation[] translations;
@@ -40,6 +38,9 @@ public class TranslateAPI {
     }
     public static String translate(String lang, String message) {
         String API_KEY = System.getenv("DEEPL_API_KEY");
+        if (API_KEY == null) {
+            throw new RuntimeException("DEEPL_API_KEY environment variable not set");
+        }
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         okhttp3.Request request = new okhttp3.Request.Builder()

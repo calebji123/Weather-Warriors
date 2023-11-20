@@ -13,7 +13,6 @@ public class HowToPlayDataAccess implements HowToPlayDataAccessInterface {
             while ((row = reader.readLine()) != null){
                 row = "\r\n" + row;
                 output.append(row);
-                System.out.println(row);
             }
             this.outputText = output.toString();
         }
