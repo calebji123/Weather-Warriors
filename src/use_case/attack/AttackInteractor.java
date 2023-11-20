@@ -7,8 +7,8 @@ public class AttackInteractor implements AttackInputBoundary{
     final AttackDataAccessObject dataAccessObject;
     final AttackOutputBoundary attackPresenter;
 
-    public AttackInteractor(AttackDataAccessObject dataAccessObject, AttackOutputBoundary attackPresenter) {
-        this.dataAccessObject = dataAccessObject;
+    public AttackInteractor(AttackDataAccessObject userDataAccessObject, AttackOutputBoundary attackPresenter) {
+        this.dataAccessObject = userDataAccessObject;
         this.attackPresenter = attackPresenter;
     }
 
