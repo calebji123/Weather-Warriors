@@ -1,14 +1,14 @@
 package use_case.attack;
 
 public class AttackInputData {
-    final private String attack;
-    final private String specialAttack;
+    final private Integer attackIdentifier;
+    final private String cardName;
 
 
-    public AttackInputData(String attack, String specialAttack) {
-        this.attack = attack;
-        this.specialAttack = specialAttack;
+    public AttackInputData(Integer attack, String cardName) {
+        this.attackIdentifier = attack;
+        this.cardName = cardName;
     }
-    public String getAttack() {return this.attack;}
-    public String getSpecial() {return this.specialAttack;}
+    public Integer getAttackIdentifier() {return this.attackIdentifier;}
+    public String getCardName() {return this.cardName;}
 }
