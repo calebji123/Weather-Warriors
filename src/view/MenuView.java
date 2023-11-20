@@ -20,7 +20,7 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
     private final JButton howToPlay;
 
     private final JButton howToPlayFrench;
-
+  
     private final JButton start;
 
     public MenuView(HowToPlayController howToPlayController, HowToPlayViewModel howToPlayViewModel) {
