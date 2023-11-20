@@ -32,7 +32,7 @@ class HowToPlayInteractorTest {
 
     @Test
     void execute() {
-        this.interactor.execute();
+        this.interactor.execute("en");
         assertEquals("Hello", viewModel.getState().getMessage());
     }
 }
