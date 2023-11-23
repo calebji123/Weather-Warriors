@@ -1,5 +1,6 @@
 package data_access;
 import java.io.*;
+
 public class HowToPlayDataAccess {
     private final String outputText;
     public HowToPlayDataAccess() throws IOException{
