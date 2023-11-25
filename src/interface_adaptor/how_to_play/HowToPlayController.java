@@ -9,7 +9,7 @@ public class HowToPlayController {
         this.howToPlayInputBoundary = howToPlayInputBoundary;
     }
 
-    public void execute() {
-        howToPlayInputBoundary.execute();
+    public void execute(String lang) {
+        howToPlayInputBoundary.execute(lang);
     }
 }

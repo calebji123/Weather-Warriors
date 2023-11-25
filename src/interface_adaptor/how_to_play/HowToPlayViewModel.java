@@ -9,6 +9,8 @@ public class HowToPlayViewModel extends ViewModel {
 
     private HowToPlayState state = new HowToPlayState();
 
+    public static final String BUTTON_LABEL = "How to play";
+
     public HowToPlayViewModel() {
         super("how_to_play");
     }
