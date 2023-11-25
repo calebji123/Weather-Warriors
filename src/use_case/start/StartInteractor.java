@@ -1,5 +1,5 @@
 package use_case.start;
-import entity.Card;
+import entity.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,14 @@ public class StartInteractor implements StartInputBoundary {
         ArrayList<String> files = chooseCards();
         ArrayList<Card> cardList = new ArrayList<>();
         for (String card : files){
-
+            //todo implement
         }
+        Deck deck = new Deck(cardList);
+        Opponent enemy = new Opponent();
+        //todo implement location here
+        Location place = new Location();
+        Board game = new Board(deck, enemy, place);
+
     }
     private ArrayList<String> chooseCards(){
         String source = "src/data_files/cards/";
