@@ -2,14 +2,15 @@ package entity;
 
 import java.util.List;
 import java.util.Random;
-
-public abstract class Opponent {
-    private final List<Attack> bossMoves;
+//make this an abstract class then hardcode in bosses I think
+public class TimeTravelingPoacher extends Opponent {
+    private List<Attack> bossMoves;
     private Integer HP;
 
-    public Opponent(List<Attack> bossMoves, Integer hp){
-        this.bossMoves = bossMoves;
+    public TimeTravelingPoacher(Integer hp, List<Attack> bossMoves){
+        super(bossMoves, hp);
         this.HP = hp;
+        this.bossMoves = bossMoves;
     }
     public Attack getAttack(){
         Random rand = new Random();
@@ -19,7 +20,6 @@ public abstract class Opponent {
     public Integer getHP(){return HP;}
     public void changeHP(Integer dmg){HP -= dmg;}
 
-    }
 
 
-
+}
