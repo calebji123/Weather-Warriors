@@ -16,6 +16,7 @@ public class Card {
         this.isNext = false;
         this.isDead = false;
         this.HP = hp;
+        this.regularAttack = new Attack(rAttack);
     }
 
 
@@ -29,6 +30,7 @@ public class Card {
     public void setHP (int dmg){this.HP -= dmg;}
     public void die(){this.isDead = true;}
     public void activate(){this.isActive = true;}
+    public void deactivate(){this.isActive = false;}
     public void makeNext(){this.isNext = true;}
     public void deactivate(){this.isActive = false;}
 }
