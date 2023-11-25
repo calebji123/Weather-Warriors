@@ -79,7 +79,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
         JLabel playerPictureLabel;
         try {
-            BufferedImage playerPicture = ImageIO.read(new File("assets/capybara.jpg"));
+            BufferedImage playerPicture = ImageIO.read(new File("src/assets/capybara.jpg"));
             playerPictureLabel = new JLabel(new ImageIcon(playerPicture
                     .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
         } catch (IOException e) {
@@ -98,7 +98,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         enemyPanel.setLayout(new BoxLayout(enemyPanel, BoxLayout.Y_AXIS));
         JLabel enemyPictureLabel;
         try {
-            BufferedImage enemyPicture = ImageIO.read(new File("assets/capybara.jpg"));
+            BufferedImage enemyPicture = ImageIO.read(new File("src/assets/capybara.jpg"));
             enemyPictureLabel = new JLabel(new ImageIcon(enemyPicture
                     .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
         } catch (IOException e) {
@@ -161,7 +161,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         deck.setLayout(new BoxLayout(deck, BoxLayout.Y_AXIS));
         JLabel deckPictureLabel;
         try {
-            BufferedImage enemyPicture = ImageIO.read(new File("assets/card-back.jpeg"));
+            BufferedImage enemyPicture = ImageIO.read(new File("src/assets/card-back.jpeg"));
             deckPictureLabel = new JLabel(new ImageIcon(enemyPicture
                     .getScaledInstance(150, 200, Image.SCALE_SMOOTH)));
         } catch (IOException e) {
