@@ -3,22 +3,20 @@ package use_case.swap;
 import entity.Card;
 
 public class SwapOutputData {
-    private final String message;
-    private String nextCard;
-    private Integer activeCardHealth;
-    private Integer bossHealth;
+    private String message;
+    private String nextCardName;
+    private Integer nextCardHealth;
 
-    public SwapOutputData(String message, Integer activeCardHealth, Integer bossHealth) {
+    public SwapOutputData(String message, String nextCardName, Integer nextCardHealth) {
         this.message = message;
-        this.activeCardHealth = activeCardHealth;
-        this.bossHealth = bossHealth;
+        this.nextCardName = nextCardName;
+        this.nextCardHealth = nextCardHealth;
     }
 
     public String getMessage() {return this.message;}
-    public String getNextCard() {return this.nextCard;}
-    public void setNextCard(String name) {this.nextCard = name;}
-    public Integer getActiveCardHealth() {return this.activeCardHealth;}
-    public void setActiveCardHealth(Integer health) {this.activeCardHealth = health;}
-    public Integer getBossHealth() {return this.bossHealth;}
-    public void setBossHealth(Integer health) {this.bossHealth = health;}
+    public void setMessage(String message) {this.message = message;}
+    public String getNextCardName() {return this.nextCardName;}
+    public void setNextCardName(String name) {this.nextCardName = name;}
+    public Integer getNextCardHealth() {return this.nextCardHealth;}
+    public void setNextCardHealth(Integer health) {this.nextCardHealth = health;}
 }

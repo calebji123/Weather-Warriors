@@ -9,8 +9,8 @@ public class AttackController {
     public AttackController(AttackInputBoundary attackUseCaseInteractor) {
         this.attackUseCaseInteractor = attackUseCaseInteractor;
     }
-    public void execute(String attack, String specialAttack) {
-        AttackInputData attackInputData = new AttackInputData(attack, specialAttack);
+    public void execute(Integer attackId, String cardName) {
+        AttackInputData attackInputData = new AttackInputData(attackId, cardName);
 
         attackUseCaseInteractor.execute(attackInputData);
     }
