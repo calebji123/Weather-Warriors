@@ -11,6 +11,13 @@ public class EndTurnPresenter implements EndTurnOutputBoundary {
     }
 
     public void prepareSuccessView(EndTurnOutputData outputData) {
-
+        EndTurnState state = new EndTurnState();
+        state.setMessage(outputData.getMessage());
+        state.setActiveCardName(outputData.getActiveCardName());
+        state.setActiveCardHealth(outputData.getActiveCardHealth());
+        state.setBossHealth(outputData.getBossHealth());
+        state.setGameEnded(outputData.getGameEnded());
+        viewModel.setState(state);
+        viewModel.firePropertyChanged();
     }
 }

@@ -2,15 +2,14 @@ package interface_adaptor.end_turn;
 
 public class EndTurnState {
     private String message;
-
+    private String activeCardName;
     private Integer activeCardHealth;
-
     private Integer bossHealth;
-
     private Boolean gameEnded;
 
     public EndTurnState(EndTurnState copy) {
         message = copy.message;
+        activeCardName = copy.activeCardName;
         activeCardHealth = copy.activeCardHealth;
         bossHealth = copy.bossHealth;
         gameEnded = copy.gameEnded;
@@ -24,6 +23,14 @@ public class EndTurnState {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getActiveCardName() {
+        return activeCardName;
+    }
+
+    public void setActiveCardName(String activeCardName) {
+        this.activeCardName = activeCardName;
     }
 
     public Integer getActiveCardHealth() {
