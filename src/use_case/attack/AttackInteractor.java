@@ -27,7 +27,7 @@ public class AttackInteractor implements AttackInputBoundary{
         Integer damage = attack.getDmg;
         opponent.setHP(opponent.getHP() - damage);
 
-        String message = card.getCardName() + "attacked Boss! Boss took " + Integer.toString(attack.getDmg())
+        String message = card.getCardName() + "attacked Boss! Boss took " + Integer.toString(damage)
                 + "damage!";
         dataAccessObject.saveToLog(message);
 
