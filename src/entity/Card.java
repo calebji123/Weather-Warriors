@@ -10,7 +10,8 @@ public class Card {
     private boolean isNext;
     public Card(String Name, int rAttack, int sAttackCode, Integer hp){
         this.CardName = Name;
-        this.specialAttack = new Attack(rAttack, sAttackCode);
+        this.regularAttack = new Attack(rAttack);
+        this.specialAttack = new SpecialAttack(rAttack, sAttackCode);
         this.isActive = false;
         this.isNext = false;
         this.isDead = false;
@@ -31,4 +32,5 @@ public class Card {
     public void activate(){this.isActive = true;}
     public void deactivate(){this.isActive = false;}
     public void makeNext(){this.isNext = true;}
+    public void deactivate(){this.isActive = false;}
 }
