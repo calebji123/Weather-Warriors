@@ -1,5 +1,7 @@
 package view;
 
+import interface_adaptor.end_turn.EndTurnController;
+import interface_adaptor.end_turn.EndTurnViewModel;
 import interface_adaptor.how_to_play.HowToPlayState;
 
 import javax.swing.*;
@@ -28,7 +30,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
 
     private final JButton swap;
 
-    public GameView() {
+    public GameView(EndTurnController endTurnController, EndTurnViewModel endTurnViewModel) {
 
         // Header
         JPanel headerPanel = new JPanel();
