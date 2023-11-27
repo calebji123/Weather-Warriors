@@ -10,14 +10,13 @@ public class AttackOutputData {
 
     public AttackOutputData(String message, Integer damage, Integer activeCardHealth, Integer bossHealth) {
         this.message = message;
-        this.activeCardName = activeCardName;
+        this.damage = damage;
         this.activeCardHealth = activeCardHealth;
         this.bossHealth = bossHealth;
         this.gameOver = false;
     }
 
-    public Boolean getGameOver() {return this.gameOver;}
-    public String getActiveCardName() {return this.activeCardName;}
+    public Integer getDamage() {return this.damage;}
     public Integer getActiveCardHealth() {return this.activeCardHealth;}
     public void setActiveCardHealth(Integer health) {this.activeCardHealth = health;}
     public Integer getBossHealth() {return this.bossHealth;}
