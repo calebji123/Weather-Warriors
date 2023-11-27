@@ -6,27 +6,22 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class AttackViewModel extends ViewModel {
-    private AttackState state;
-    public AttackViewModel(String viewName) {
-        super(viewName);
-    }
+    private final String TITLE_LABEL = "Attack View";
+    private static final String REGULAR_BUTTON_LABEL = "Attack";
+    private static final String SPECIAL_BUTTON_LABEL = "Special Attack";
+    private AttackState attackState = new AttackState();
 
-    public AttackState getState() {
-        return state;
-    }
-
-    public void setState(AttackState state) {
-        this.state = state;
-    }
-
-    PropertyChangeSupport support = new PropertyChangeSupport(this);
+    public AttackViewModel() {super("attack");}
+    public void setState(AttackState state) {this.attackState = state;}
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     @Override
     public void firePropertyChanged() {
-        support.firePropertyChange("state", null, this.state);
+        support.firePropertyChange("state", null, this.attackState);
     }
 
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
+    public AttackState getState() {return attackState;}
 }

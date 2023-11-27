@@ -22,8 +22,8 @@ public class AttackState {
     public void setActiveCardHealth(Integer health) {this.activeCardHealth = health;}
     public Integer getBossHealth() {return this.bossHealth;}
     public void setBossHealth(Integer health) {this.bossHealth = health;}
-    public Boolean getGameOver() {return this.gameOver;}
-    public void setGameOver(Boolean gameOver) {this.gameOver = gameOver;}
+    public void setGameOver() {this.gameOver = true;}
+    public Boolean gameOver() {return gameOver;}
     public String getMessage() {return this.message;}
     public void setMessage(String message) {this.message = message;}
 }
