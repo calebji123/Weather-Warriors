@@ -32,5 +32,4 @@ public class Card {
     public void activate(){this.isActive = true;}
     public void deactivate(){this.isActive = false;}
     public void makeNext(){this.isNext = true;}
-    public void deactivate(){this.isActive = false;}
 }

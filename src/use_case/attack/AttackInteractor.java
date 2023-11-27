@@ -18,27 +18,27 @@ public class AttackInteractor implements AttackInputBoundary{
         String cardName = attackInputData.getCardName();
         Card card = dataAccessObject.getCard(cardName);
         Card opponent = dataAccessObject.getCard("Boss");
-
+        Attack attack;
         if (attackId == 0) {
-            Attack attack = card.getRegularAttack();
+            attack = card.getRegularAttack();
         } else {
-            Attack attack = card.getSpecialAttack();
+            attack = card.getSpecialAttack();
         }
-        Integer damage = attack.getDmg;
+        Integer damage = attack.getDmg();
         opponent.setHP(opponent.getHP() - damage);
 
         String message = card.getCardName() + "attacked Boss! Boss took " + Integer.toString(attack.getDmg())
                 + "damage!";
-        dataAccessObject.saveToLog(message);
 
-        AttackOutputData attackOutputData = new AttackOutputData(message, damage, card.getHP(), opponent.getHP(),
+        AttackOutputData attackOutputData = new AttackOutputData(message, card.getCardName(), card.getHP(), opponent.getHP(),
                 false);
         if (opponent.getHP() <= 0) {
             String deathMessage = "Boss has been defeated!";
             opponent.die();
             attackOutputData.setMessage(message + "\n" + deathMessage);
             attackOutputData.gameOver();
-
         }
+        dataAccessObject.saveToLog(message);
+        attackPresenter.prepareSuccessView(attackOutputData);
     }
 }
