@@ -15,6 +15,8 @@ public class ExitPresenter implements ExitOutputBoundary{
     @Override
     public void prepareSuccessView(ExitOutputData exitOutputData) {
         ExitState exitState = exitViewModel.getState();
+
+        viewManagerModel.setCurrentView(exitViewModel.getViewName());
         exitViewModel.firePropertyChanged();
     }
 }
