@@ -2,6 +2,7 @@ package data_access;
 import use_case.how_to_play.HowToPlayDataAccessInterface;
 
 import java.io.*;
+
 public class HowToPlayDataAccess implements HowToPlayDataAccessInterface {
     private final String outputText;
     public HowToPlayDataAccess() throws IOException{

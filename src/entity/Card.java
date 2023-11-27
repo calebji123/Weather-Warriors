@@ -8,14 +8,15 @@ public class Card {
     private boolean isDead;
     private boolean isActive;
     private boolean isNext;
-    public Card(String Name, Attack rAttack, Attack sAttack, Integer hp){
+    public Card(String Name, int rAttack, int sAttackCode, Integer hp){
         this.CardName = Name;
-        this.regularAttack = rAttack;
-        this.specialAttack = sAttack;
+        this.regularAttack = new Attack(rAttack);
+        this.specialAttack = new SpecialAttack(rAttack, sAttackCode);
         this.isActive = false;
         this.isNext = false;
         this.isDead = false;
         this.HP = hp;
+        this.regularAttack = new Attack(rAttack);
     }
 
 
@@ -29,5 +30,7 @@ public class Card {
     public void setHP (int dmg){this.HP -= dmg;}
     public void die(){this.isDead = true;}
     public void activate(){this.isActive = true;}
+    public void deactivate(){this.isActive = false;}
     public void makeNext(){this.isNext = true;}
+    public void deactivate(){this.isActive = false;}
 }

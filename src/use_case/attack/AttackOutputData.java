@@ -8,7 +8,7 @@ public class AttackOutputData {
     private Boolean gameOver;
 
 
-    public AttackOutputData(String message, Integer damage, Integer activeCardHealth, Integer bossHealth, Boolean gameOver) {
+    public AttackOutputData(String message, Integer damage, Integer activeCardHealth, Integer bossHealth) {
         this.message = message;
         this.damage = damage;
         this.activeCardHealth = activeCardHealth;
@@ -21,7 +21,8 @@ public class AttackOutputData {
     public void setActiveCardHealth(Integer health) {this.activeCardHealth = health;}
     public Integer getBossHealth() {return this.bossHealth;}
     public void setBossHealth(Integer health) {this.bossHealth = health;}
-    public void gameOver() {this.gameOver = true;}
+    public void setGameOver() {this.gameOver = true;}
+    public Boolean gameOver() {return gameOver;}
     public String getMessage() {return this.message;}
     public void setMessage(String message) {this.message = message;}
 
