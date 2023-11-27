@@ -36,7 +36,7 @@ public class AttackInteractor implements AttackInputBoundary{
             String deathMessage = "Boss has been defeated!";
             opponent.die();
             attackOutputData.setMessage(message + "\n" + deathMessage);
-            attackOutputData.setGameOvergameOver();
+            attackOutputData.setGameOver();
         }
 
 
