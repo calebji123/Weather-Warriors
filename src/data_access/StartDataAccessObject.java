@@ -27,8 +27,8 @@ public class StartDataAccessObject {
     }
     public Card getCard(){return this.card;}
 
-    public static void main(String[] args) throws IOException, ParseException {
-        StartDataAccessObject o = new StartDataAccessObject("src/data_files/cards/Card1.json");
-        System.out.println(o.getCard().getCardName());
-    }
+//    public static void main(String[] args) throws IOException, ParseException {
+//        StartDataAccessObject o = new StartDataAccessObject("src/data_files/cards/Card1.json");
+//        System.out.println(o.getCard().getCardName());
+//    }
 }

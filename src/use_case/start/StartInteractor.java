@@ -1,9 +1,12 @@
 package use_case.start;
+import data_access.StartDataAccessObject;
 import entity.*;
+import entity.enemies.TimeTravelingPoacher;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+
 public class StartInteractor implements StartInputBoundary {
     //call data access objects for relevant info
     //Make sure the right things are initialized like attack and everything
@@ -14,19 +17,22 @@ public class StartInteractor implements StartInputBoundary {
     final StartDataAccessInterface cardDataAccesObject;
     public StartInteractor(StartDataAccessInterface startDataAccessInterface){
         this.cardDataAccesObject = startDataAccessInterface;
+
     }
-    public void execute(){
+    public void execute() throws IOException {
         ArrayList<String> files = chooseCards();
         ArrayList<Card> cardList = new ArrayList<>();
         for (String card : files){
-            //todo implement
+            StartDataAccessObject cardData = new StartDataAccessObject(card);
+            cardList.add(cardData.getCard());
         }
         Deck deck = new Deck(cardList);
-        Opponent enemy = new Opponent();
-        //todo implement location here
-        Location place = new Location();
+        Opponent enemy = new TimeTravelingPoacher();
+        //todo implement location data access here
+        Location place = new Location("Toronto", 0.0, 0.0, 5, 30, "Montreal");
         Board game = new Board(deck, enemy, place);
-
+        GameState gameState = new GameState();
+        gameState.setGame(game);
     }
     private ArrayList<String> chooseCards(){
         String source = "src/data_files/cards/";
@@ -36,7 +42,7 @@ public class StartInteractor implements StartInputBoundary {
                 source + "card9.json", source + "card10.json"};
         ArrayList<String> output = new ArrayList<>();
         Random rand = new Random();
-        for (int i = 9; i > 4; i--){
+        for (int i = 9; i >=5; i--){
             output.add(cardnames[rand.nextInt(i)]);
         }
         return output;

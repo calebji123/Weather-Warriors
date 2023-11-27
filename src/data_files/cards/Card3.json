@@ -1,7 +1,7 @@
 {
-  "Name":"Hi",
-  "HP": "1",
-  "Attack": "1",
-  "Modifier code": "1",
+  "Name":"Mosquito",
+  "HP": "10",
+  "Attack": "8",
+  "Modifier code": "28",
   "Sprite": ""
 }
