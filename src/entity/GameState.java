@@ -1,9 +1,16 @@
 package entity;
 
 public class GameState {
-    public Board game;
-    public void setGame(Board game) {
-        this.game = game;
+    private Board game;
+
+    public GameState(){
+
     }
 
+    public Board getBoard(){
+        return this.game;
+    }
+    public void setGame(Board board){
+        this.game = board;
+    }
 }

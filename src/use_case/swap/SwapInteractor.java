@@ -15,11 +15,18 @@ final SwapOutputBoundary swapPresenter;
     public void execute(SwapInputData data) {
         String activeCardName = data.getActiveCardName();
         Card activeCard = dataAccessObject.getCard(activeCardName);
-        if (dataAccessObject.nextCardExists()) {
+        if (!dataAccessObject.nextCardExists()) {
+            swapPresenter.prepareFailView("There are no more cards in your deck!");
+        }
+        else {
+            //If there are still cards in the deck we deactivate the current, and activate the next.
             Card nextCard = dataAccessObject.getNextCard();
-            activeCard.swapped();
+            activeCard.deactivate();
             nextCard.activate();
-            nextCard.notNext();
+
+            String message = "Swapped to " + nextCard.getCardName() + "!";
+            SwapOutputData swapOutputData = new SwapOutputData(message, nextCard.getCardName(), nextCard.getHP());
+            swapPresenter.prepareSuccessView(swapOutputData);
         }
 
     }

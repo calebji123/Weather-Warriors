@@ -3,6 +3,7 @@ package entity;
 public class SpecialAttack extends Attack{
     private int modifier;
     private int specialDmg;
+    private String name;
     private final int code;
     public SpecialAttack(int dmg, int code) {
         super(dmg);
@@ -29,4 +30,5 @@ public class SpecialAttack extends Attack{
         //not exactly this but close
     }
     public int getSpecialDmg(){return this.specialDmg;}
+    public String getSpName(){return this.name;}
 }
