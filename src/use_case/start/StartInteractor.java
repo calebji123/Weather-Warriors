@@ -14,37 +14,19 @@ public class StartInteractor implements StartInputBoundary {
     //Set environment
     //Choose opponent
     private final int deckSize = 5;
-    final StartDataAccessInterface cardDataAccesObject;
-    public StartInteractor(StartDataAccessInterface startDataAccessInterface){
-        this.cardDataAccesObject = startDataAccessInterface;
-
+    final StartDataAccessInterface dataAccessObject;
+    final StartOutputBoundary presenter;
+    public StartInteractor(StartDataAccessInterface startDataAccessInterface, StartOutputBoundary presenter){
+        this.dataAccessObject = startDataAccessInterface;
+        this.presenter = presenter;
     }
-    public void execute() throws IOException {
-        ArrayList<String> files = chooseCards();
-        ArrayList<Card> cardList = new ArrayList<>();
-        for (String card : files){
-            StartDataAccessObject cardData = new StartDataAccessObject(card);
-            cardList.add(cardData.getCard());
-        }
-        Deck deck = new Deck(cardList);
-        Opponent enemy = new TimeTravelingPoacher();
-        //todo implement location data access here
-        Location place = new Location("Toronto", 0.0, 0.0, 5, 30, "Montreal");
-        Board game = new Board(deck, enemy, place);
-        GameState gameState = new GameState();
-        gameState.setGame(game);
-    }
-    private ArrayList<String> chooseCards(){
-        String source = "src/data_files/cards/";
-        String[] cardnames = {source + "card1.json", source + "card2.json",
-                source + "card3.json", source + "card4.json",source + "card5.json",
-                source + "card6.json", source + "card7.json", source + "card8.json",
-                source + "card9.json", source + "card10.json"};
-        ArrayList<String> output = new ArrayList<>();
-        Random rand = new Random();
-        for (int i = 9; i >=5; i--){
-            output.add(cardnames[rand.nextInt(i)]);
-        }
-        return output;
+    public void execute() {
+        dataAccessObject.initializeBoard();
+        Board board = dataAccessObject.getBoard();
+        Deck deck = board.getDeck();
+        Card active = deck.getActive();
+        Location location = board.getLocation();
+        StartOutputData startOutputData = new StartOutputData(active.getCardName(), active.getHP(), board.getOpponent().getHP(), deck.getNext().getCardName(), location.getLocationName(), location.getTemperature(), location.getNextLocationName());
+        presenter.prepareSuccessView(startOutputData);
     }
 }

@@ -1,17 +1,23 @@
 package interface_adaptor.location;
 
+import interface_adaptor.game.GameState;
+import interface_adaptor.game.GameViewModel;
 import use_case.location.LocationOutputBoundary;
 import use_case.location.LocationOutputData;
 
 public class LocationPresenter implements LocationOutputBoundary {
-    private final LocationViewModel locationViewModel;
+    private final GameViewModel gameViewModel;
 
-    public LocationPresenter(LocationViewModel locationViewModel) {
-        this.locationViewModel = locationViewModel;
+    public LocationPresenter(GameViewModel gameViewModel) {
+        this.gameViewModel = gameViewModel;
     }
 
-    public LocationViewModel prepareView(LocationOutputData locationOutputData) {
-        LocationState locationState = locationViewModel.getState();
-        //TODO
+    public void prepareView(LocationOutputData locationOutputData) {
+        GameState gameState = gameViewModel.getState();
+        gameState.setLocation(locationOutputData.getLocationName());
+        gameState.setTemperature(locationOutputData.getTemperature());
+        gameState.setNextLocation(locationOutputData.getNextLocationName());
+        gameViewModel.setState(gameState);
+        gameViewModel.firePropertyChanged();
     }
 }

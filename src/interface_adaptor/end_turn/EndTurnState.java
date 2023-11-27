@@ -4,6 +4,8 @@ public class EndTurnState {
     private String message;
     private String activeCardName;
     private Integer activeCardHealth;
+    private String nextCardName;
+
     private Integer bossHealth;
     private Boolean gameEnded;
 
@@ -11,6 +13,7 @@ public class EndTurnState {
         message = copy.message;
         activeCardName = copy.activeCardName;
         activeCardHealth = copy.activeCardHealth;
+        nextCardName = copy.nextCardName;
         bossHealth = copy.bossHealth;
         gameEnded = copy.gameEnded;
     }
@@ -55,5 +58,13 @@ public class EndTurnState {
 
     public void setGameEnded(Boolean gameEnded) {
         this.gameEnded = gameEnded;
+    }
+
+    public String getNextCardName() {
+        return nextCardName;
+    }
+
+    public void setNextCardName(String nextCardName) {
+        this.nextCardName = nextCardName;
     }
 }

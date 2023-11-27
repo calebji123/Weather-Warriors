@@ -1,23 +1,25 @@
 package interface_adaptor.end_turn;
 
+import interface_adaptor.game.GameState;
+import interface_adaptor.game.GameViewModel;
 import use_case.end_turn.EndTurnOutputBoundary;
 import use_case.end_turn.EndTurnOutputData;
 
 public class EndTurnPresenter implements EndTurnOutputBoundary {
-    private final EndTurnViewModel viewModel;
+    private final GameViewModel gameViewModel;
 
-    public EndTurnPresenter(EndTurnViewModel viewModel) {
-        this.viewModel = viewModel;
+    public EndTurnPresenter(GameViewModel gameViewModel) {
+        this.gameViewModel = gameViewModel;
     }
 
     public void prepareSuccessView(EndTurnOutputData outputData) {
-        EndTurnState state = new EndTurnState();
-        state.setMessage(outputData.getMessage());
-        state.setActiveCardName(outputData.getActiveCardName());
-        state.setActiveCardHealth(outputData.getActiveCardHealth());
-        state.setBossHealth(outputData.getBossHealth());
-        state.setGameEnded(outputData.getGameEnded());
-        viewModel.setState(state);
-        viewModel.firePropertyChanged();
+        GameState gameState = gameViewModel.getState();
+        gameState.setLog(gameState.getLog() + outputData.getMessage());
+        gameState.setActiveCardName(outputData.getActiveCardName());
+        gameState.setActiveCardHealth(outputData.getActiveCardHealth());
+        gameState.setOpponentCardHealth(outputData.getBossHealth());
+        gameState.setGameOver(outputData.getGameEnded());
+        gameViewModel.setState(gameState);
+        gameViewModel.firePropertyChanged();
     }
 }

@@ -23,7 +23,6 @@ public class StartDataAccessObject {
         int atk = Integer.parseInt((String) j.get("Attack"));
         int code = Integer.parseInt((String) j.get("Modifier code"));
         this.card = new Card(CardName, atk, code, HP);
-
     }
     public Card getCard(){return this.card;}
 
