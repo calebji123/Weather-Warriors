@@ -2,6 +2,7 @@ package app;
 
 import data_access.HowToPlayDataAccess;
 import interface_adaptor.ViewManagerModel;
+import interface_adaptor.end_turn.EndTurnViewModel;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
 import use_case.how_to_play.HowToPlayDataAccessInterface;
 import view.GameView;
@@ -33,10 +34,12 @@ public class Main {
             throw new RuntimeException(e);
         }
 
+        EndTurnViewModel endTurnViewModel = new EndTurnViewModel();
+
         MenuView menuView = MenuViewFactory.create(howToPlayViewModel, dataAccessObject);
         views.add(menuView, menuView.viewName);
 
-        GameView gameView = GameViewFactory.create();
+        GameView gameView = GameViewFactory.create(endTurnViewModel);
         views.add(gameView, gameView.viewName);
 
         viewManagerModel.setCurrentView(menuView.viewName);

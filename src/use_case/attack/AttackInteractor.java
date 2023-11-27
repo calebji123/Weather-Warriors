@@ -29,7 +29,6 @@ public class AttackInteractor implements AttackInputBoundary{
 
         String message = card.getCardName() + "attacked Boss! Boss took " + Integer.toString(damage)
                 + "damage!";
-        dataAccessObject.saveToLog(message);
 
         AttackOutputData attackOutputData = new AttackOutputData(message, damage, card.getHP(), opponent.getHP());
         if (opponent.getHP() <= 0) {
@@ -38,7 +37,5 @@ public class AttackInteractor implements AttackInputBoundary{
             attackOutputData.setMessage(message + "\n" + deathMessage);
             attackOutputData.setGameOver();
         }
-
-
     }
 }
