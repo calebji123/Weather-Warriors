@@ -10,7 +10,7 @@ public class SwapViewModel extends ViewModel {
     public final String TITLE_LABEL = "Swap View";
     public static final String BUTTON_LABEL = "Swap";
     private SwapState swapState = new SwapState();
-    public SwapViewModel(String viewName) {super("swap");}
+    public SwapViewModel() {super("swap");}
     public void setState(SwapState state) {this.swapState = state;}
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

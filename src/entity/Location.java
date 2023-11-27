@@ -39,4 +39,28 @@ public class Location {
 
     public String getNextLocationName(){return this.nextLocationName;}
 
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public void setTemperature(Integer temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setHumidity(Integer humidity) {
+        this.humidity = humidity;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setNextLocationName(String nextLocationName) {
+        this.nextLocationName = nextLocationName;
+    }
+
 }

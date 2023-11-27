@@ -11,7 +11,7 @@ import java.util.Random;
 public class TimeTravelingPoacher implements Opponent {
     private List<Attack> bossMoves = new ArrayList<>();
     private Attack lastMove;
-    private Integer HP = 30;
+    private Integer HP = 1000;
     private final String imageFilePath = ".jpg";
 
     public TimeTravelingPoacher(){

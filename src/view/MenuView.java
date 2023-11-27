@@ -3,6 +3,8 @@ package view;
 import interface_adaptor.how_to_play.HowToPlayController;
 import interface_adaptor.how_to_play.HowToPlayState;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
+import interface_adaptor.start.StartController;
+import interface_adaptor.start.StartViewModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,20 +14,17 @@ import java.beans.PropertyChangeListener;
 
 public class MenuView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "menu";
-
     private final HowToPlayViewModel howToPlayViewModel;
-
     private final HowToPlayController howToPlayController;
-
+    private final StartController startController;
     private final JButton howToPlay;
-
     private final JButton howToPlayFrench;
-  
     private final JButton start;
 
-    public MenuView(HowToPlayController howToPlayController, HowToPlayViewModel howToPlayViewModel) {
+    public MenuView(HowToPlayController howToPlayController, HowToPlayViewModel howToPlayViewModel, StartController startController) {
         this.howToPlayController = howToPlayController;
         this.howToPlayViewModel = howToPlayViewModel;
+        this.startController = startController;
         howToPlayViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Menu Screen");
@@ -64,7 +63,16 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
                 }
             }
         );
-        start.addActionListener(this);
+        start.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (e.getSource().equals(start)) {
+                        startController.execute();
+                    }
+                }
+            }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

@@ -9,8 +9,8 @@ public class SwapController {
     public SwapController(SwapInputBoundary swapUseCaseInteractor) {
         this.swapUseCaseInteractor = swapUseCaseInteractor;
     }
-    public void execute(String activeCardName) {
-        SwapInputData swapInputData = new SwapInputData(activeCardName);
+    public void execute() {
+        SwapInputData swapInputData = new SwapInputData();
 
         swapUseCaseInteractor.execute(swapInputData);
     }

@@ -16,9 +16,10 @@ public class LocationInteractor implements LocationInputBoundary {
     @Override
     public void execute() {
         Location location = dataAccessObject.getLocation();
-        location.next();
+        //TODO implement get next location
+//        location.next();
         WeatherResponse response = WeatherAPI.getWeather(location.getLongitude(), location.getLatitude());
-        LocationOutputData outputData = new LocationOutputData(location.getName(), response.getMain().getTemp(), response.getMain().getHumidity(), location.getNextLocation());
+        LocationOutputData outputData = new LocationOutputData(location.getLocationName(), new Double(response.getMain().getTemp()).intValue(), response.getMain().getHumidity(), location.getNextLocationName());
         presenter.prepareView(outputData);
     }
 }

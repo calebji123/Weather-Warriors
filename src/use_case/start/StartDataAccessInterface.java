@@ -1,7 +1,9 @@
 package use_case.start;
 
+import entity.Board;
 import entity.Card;
 
 public interface StartDataAccessInterface {
-    public Card getCard();
+    void initializeBoard();
+    Board getBoard();
 }
