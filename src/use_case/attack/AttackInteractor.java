@@ -2,12 +2,13 @@ package use_case.attack;
 
 import entity.Attack;
 import entity.Card;
+import entity.Opponent;
 
 public class AttackInteractor implements AttackInputBoundary{
-    final AttackDataAccessObject dataAccessObject;
+    final AttackDataAccessInterface dataAccessObject;
     final AttackOutputBoundary attackPresenter;
 
-    public AttackInteractor(AttackDataAccessObject userDataAccessObject, AttackOutputBoundary attackPresenter) {
+    public AttackInteractor(AttackDataAccessInterface userDataAccessObject, AttackOutputBoundary attackPresenter) {
         this.dataAccessObject = userDataAccessObject;
         this.attackPresenter = attackPresenter;
     }
@@ -15,9 +16,8 @@ public class AttackInteractor implements AttackInputBoundary{
     @Override
     public void execute(AttackInputData attackInputData) {
         Integer attackId = attackInputData.getAttackIdentifier();
-        String cardName = attackInputData.getCardName();
-        Card card = dataAccessObject.getCard(cardName);
-        Card opponent = dataAccessObject.getCard("Boss");
+        Card card = dataAccessObject.getBoard().getDeck().getActive();
+        Opponent opponent = dataAccessObject.getBoard().getOpponent();
         Attack attack;
         if (attackId == 0) {
             attack = card.getRegularAttack();
@@ -25,18 +25,18 @@ public class AttackInteractor implements AttackInputBoundary{
             attack = card.getSpecialAttack();
         }
         Integer damage = attack.getDmg();
-        opponent.setHP(opponent.getHP() - damage);
+        opponent.changeHP(damage);
 
-        String message = card.getCardName() + "attacked Boss! Boss took " + Integer.toString(damage)
-                + "damage!";
+        String message = card.getCardName() + " attacked Boss! Boss took " + Integer.toString(damage)
+                + " damage!";
 
-        AttackOutputData attackOutputData = new AttackOutputData(message, damage, card.getHP(), opponent.getHP());
+        AttackOutputData attackOutputData = new AttackOutputData(message, opponent.getHP());
         if (opponent.getHP() <= 0) {
             String deathMessage = "Boss has been defeated!";
-            opponent.die();
-            attackOutputData.setMessage(message + "\n" + deathMessage);
+            attackOutputData.setMessage(message + "\r\n" + deathMessage);
             attackOutputData.setGameOver();
         }
+        dataAccessObject.saveToLog(message);
         attackPresenter.prepareSuccessView(attackOutputData);
     }
 }

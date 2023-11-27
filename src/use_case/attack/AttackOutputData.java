@@ -2,23 +2,15 @@ package use_case.attack;
 
 public class AttackOutputData {
     private String message;
-    private Integer damage;
-    private String activeCardName;
-    private Integer activeCardHealth;
     private Integer bossHealth;
     private Boolean gameOver;
 
-    public AttackOutputData(String message, Integer damage, Integer activeCardHealth, Integer bossHealth) {
+    public AttackOutputData(String message,  Integer bossHealth ) {
         this.message = message;
-        this.damage = damage;
-        this.activeCardHealth = activeCardHealth;
         this.bossHealth = bossHealth;
         this.gameOver = false;
     }
 
-    public Integer getDamage() {return this.damage;}
-    public Integer getActiveCardHealth() {return this.activeCardHealth;}
-    public void setActiveCardHealth(Integer health) {this.activeCardHealth = health;}
     public Integer getBossHealth() {return this.bossHealth;}
     public void setBossHealth(Integer health) {this.bossHealth = health;}
     public void setGameOver() {this.gameOver = true;}

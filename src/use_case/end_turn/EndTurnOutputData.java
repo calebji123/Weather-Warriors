@@ -1,16 +1,18 @@
 package use_case.end_turn;
 
 public class EndTurnOutputData {
-    private String message;
-    private String activeCardName;
-    private Integer activeCardHealth;
-    private Integer bossHealth;
-    private Boolean gameEnded;
+    private final String message;
+    private final String activeCardName;
+    private final Integer activeCardHealth;
+    private final String nextCardName;
+    private final Integer bossHealth;
+    private final Boolean gameEnded;
 
-    public EndTurnOutputData(String message, String activeCardName, Integer activeCardHealth, Integer bossHealth, Boolean gameEnded) {
+    public EndTurnOutputData(String message, String activeCardName, Integer activeCardHealth, String nextCardName, Integer bossHealth, Boolean gameEnded) {
         this.message = message;
         this.activeCardName = activeCardName;
         this.activeCardHealth = activeCardHealth;
+        this.nextCardName = nextCardName;
         this.bossHealth = bossHealth;
         this.gameEnded = gameEnded;
     }
@@ -25,6 +27,10 @@ public class EndTurnOutputData {
 
     public Integer getActiveCardHealth() {
         return activeCardHealth;
+    }
+
+    public String getNextCardName() {
+        return nextCardName;
     }
 
     public Integer getBossHealth() {

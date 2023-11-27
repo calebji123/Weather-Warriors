@@ -16,6 +16,7 @@ public class Deck {
     public int getDeckSize(){return this.deck.size();}
     public Card getActive(){return this.active;}
     public Card getNext(){return this.next;}
+    public Boolean hasNext(){return this.next != null;}
     public void shuffle(){
         if (this.next != null) {
             this.active.deactivate();
