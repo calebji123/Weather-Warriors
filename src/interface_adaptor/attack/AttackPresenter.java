@@ -23,6 +23,8 @@ public class AttackPresenter implements AttackOutputBoundary {
             attackState.setGameOver();
         }
 
+        attackViewModel.setState(attackState);
+
         attackViewModel.firePropertyChanged();
     }
 }

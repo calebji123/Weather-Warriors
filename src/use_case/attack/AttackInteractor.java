@@ -37,5 +37,6 @@ public class AttackInteractor implements AttackInputBoundary{
             attackOutputData.setMessage(message + "\n" + deathMessage);
             attackOutputData.setGameOver();
         }
+        attackPresenter.prepareSuccessView(attackOutputData);
     }
 }
