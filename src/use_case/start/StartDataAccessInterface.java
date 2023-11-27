@@ -1,5 +1,7 @@
 package use_case.start;
 
-public interface StartDataAccessInterface {
+import entity.Card;
 
+public interface StartDataAccessInterface {
+    public Card getCard();
 }
