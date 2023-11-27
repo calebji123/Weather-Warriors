@@ -6,6 +6,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class ExitViewModel extends ViewModel {
+    public final String TITLE_LABEL = "Exit View";
+    public final String EXIT_BUTTON_LABEL = "Exit";
     private ExitState state = new ExitState();
     public ExitViewModel() {super("exit");}
     public void setState(ExitState state) {this.state = state;}
