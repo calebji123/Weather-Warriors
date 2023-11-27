@@ -1,23 +1,23 @@
 package interface_adaptor.attack;
 
 public class AttackState {
-    private String message;
-    private String activeCardName;
-    private Integer activeCardHealth;
-    private Integer bossHealth;
-    private Boolean gameOver;
+    private String message = null;
+    private Integer damage = null;
+    private Integer activeCardHealth = null;
+    private Integer bossHealth = null;
+    private Boolean gameOver = false;
 
     public AttackState(AttackState copy) {
         message = copy.message;
-        activeCardName = copy.activeCardName;
+        damage = copy.damage;
         activeCardHealth = copy.activeCardHealth;
         bossHealth = copy.bossHealth;
         gameOver = copy.gameOver;
     }
     public AttackState() {}
 
-    public String getActiveCardName() {return this.activeCardName;}
-    public void setActiveCardName(String name) {this.activeCardName = name;}
+    public Integer getDamage() {return this.damage;}
+    public void setDamage(Integer damage) {this.damage = damage;}
     public Integer getActiveCardHealth() {return this.activeCardHealth;}
     public void setActiveCardHealth(Integer health) {this.activeCardHealth = health;}
     public Integer getBossHealth() {return this.bossHealth;}
