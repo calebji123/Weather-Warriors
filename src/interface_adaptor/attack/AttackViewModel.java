@@ -6,9 +6,9 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class AttackViewModel extends ViewModel {
-    private final String TITLE_LABEL = "Attack View";
-    private static final String REGULAR_BUTTON_LABEL = "Attack";
-    private static final String SPECIAL_BUTTON_LABEL = "Special Attack";
+    public final String TITLE_LABEL = "Attack View";
+    public static final String REGULAR_BUTTON_LABEL = "Attack";
+    public static final String SPECIAL_BUTTON_LABEL = "Special Attack";
     private AttackState attackState = new AttackState();
 
     public AttackViewModel() {super("attack");}

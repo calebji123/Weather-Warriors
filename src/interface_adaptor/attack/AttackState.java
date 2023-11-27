@@ -1,10 +1,10 @@
 package interface_adaptor.attack;
 
 public class AttackState {
-    private String message = null;
-    private Integer damage = null;
-    private Integer activeCardHealth = null;
-    private Integer bossHealth = null;
+    private String message = "";
+    private Integer damage = 0;
+    private Integer activeCardHealth = 0;
+    private Integer bossHealth = 0;
     private Boolean gameOver = false;
 
     public AttackState(AttackState copy) {
