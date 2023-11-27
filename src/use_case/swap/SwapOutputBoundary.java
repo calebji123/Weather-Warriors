@@ -1,5 +1,6 @@
 package use_case.swap;
 
 public interface SwapOutputBoundary {
-    void prepareView(SwapOutputData data);
+    void prepareSuccessView(SwapOutputData data);
+    void prepareFailView(String error);
 }
