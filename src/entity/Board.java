@@ -13,4 +13,20 @@ public class Board {
         this.location = location;
     }
 
+    public Deck getDeck(){
+        return this.deck;
+    }
+
+    public Opponent getOpponent(){
+        return opponent;
+    }
+
+    public Location getLocation(){
+        return location;
+    }
+
+    public void setLocation(Location nextLocation){
+        this.location = nextLocation;
+    }
+
 }
