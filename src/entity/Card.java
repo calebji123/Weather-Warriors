@@ -8,10 +8,10 @@ public class Card {
     private boolean isDead;
     private boolean isActive;
     private boolean isNext;
-    public Card(String Name, int rAttack, int sAttackCode, Integer hp){
+    public Card(String Name, int rAttack, int sAttackCode, Integer hp, Location location){
         this.CardName = Name;
         this.regularAttack = new Attack(rAttack);
-        this.specialAttack = new SpecialAttack(rAttack, sAttackCode);
+        this.specialAttack = new SpecialAttack(rAttack, sAttackCode, location);
         this.isActive = false;
         this.isNext = false;
         this.isDead = false;

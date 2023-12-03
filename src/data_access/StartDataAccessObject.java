@@ -1,6 +1,7 @@
 package data_access;
 
 import entity.Card;
+import entity.Location;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -11,7 +12,7 @@ import java.io.IOException;
 public class StartDataAccessObject {
     private final Card card;
 
-    public StartDataAccessObject(String filename) throws IOException, ParseException {
+    public StartDataAccessObject(String filename, Location location) throws IOException, ParseException {
         //read json
         // turn into variables
         // save variables??
@@ -22,7 +23,7 @@ public class StartDataAccessObject {
         String CardName = (String) j.get("Name") ;
         int atk = Integer.parseInt((String) j.get("Attack"));
         int code = Integer.parseInt((String) j.get("Modifier code"));
-        this.card = new Card(CardName, atk, code, HP);
+        this.card = new Card(CardName, atk, code, HP, location);
     }
     public Card getCard(){return this.card;}
 

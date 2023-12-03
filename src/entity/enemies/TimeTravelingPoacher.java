@@ -1,6 +1,7 @@
 package entity.enemies;
 
 import entity.Attack;
+import entity.Location;
 import entity.Opponent;
 import entity.SpecialAttack;
 
@@ -14,20 +15,22 @@ public class TimeTravelingPoacher implements Opponent {
     private Integer HP = 1000;
     private final String imageFilePath = ".jpg";
 
-    public TimeTravelingPoacher(){
-        Attack pass = new SpecialAttack(0, 1);
+
+
+    public TimeTravelingPoacher(Location location){
+        Attack pass = new SpecialAttack(0, 1, location);
         this.bossMoves.add(pass);
-        Attack heal = new SpecialAttack(1, 1);
+        Attack heal = new SpecialAttack(1, 1, location);
         this.bossMoves.add(heal);
         Attack bigAttack = new Attack(20);
         this.bossMoves.add(bigAttack);
         Attack smallAttack = new Attack(5);
         this.bossMoves.add(smallAttack);
-        Attack fireball = new SpecialAttack(1, 1);
+        Attack fireball = new SpecialAttack(1, 1, location);
         this.bossMoves.add(fireball);
-        Attack iceStorm = new SpecialAttack(1, 1);
+        Attack iceStorm = new SpecialAttack(1, 1, location);
         this.bossMoves.add(iceStorm);
-        Attack gustBlast = new SpecialAttack(1, 1);
+        Attack gustBlast = new SpecialAttack(1, 1, location);
         this.bossMoves.add(gustBlast);
     }
     public Attack getAttack(){

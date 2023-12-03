@@ -41,7 +41,7 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
         String CardName = (String) j.get("Name") ;
         int atk = Integer.parseInt((String) j.get("Attack"));
         int code = Integer.parseInt((String) j.get("Modifier code"));
-        return new Card(CardName, atk, code, HP);
+        return new Card(CardName, atk, code, HP, board.getLocation());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
             cards.add(cardList.get(rand.nextInt(i)));
         }
         Deck deck = new Deck(cards);
-        Opponent enemy = new TimeTravelingPoacher();
+        Opponent enemy = new TimeTravelingPoacher(board.getLocation());
         Location place = new Location("Toronto", 0.0, 0.0, 5, 30, "Montreal");
         WeatherResponse weather = WeatherAPI.getWeather(place.getLatitude(), place.getLongitude());
         place.setTemperature(new Double(weather.getMain().getTemp()).intValue());
