@@ -1,7 +1,5 @@
 package use_case.start;
 
-import entity.GameState;
-
 public class StartOutputData {
     private String activeCardName;
     private Integer activeCardHealth;

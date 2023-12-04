@@ -1,5 +1,8 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
     private Coord coord;
     private Weather[] weather;
@@ -9,7 +12,6 @@ public class WeatherResponse {
     private Wind wind;
     private Clouds clouds;
     private int dt;
-    private Sys sys;
     private int timezone;
     private int id;
     private Rain rain;
@@ -170,43 +172,6 @@ public class WeatherResponse {
         }
     }
 
-    public static class Sys {
-        private int type;
-        private int id;
-        private String country;
-        private int sunrise;
-        private int sunset;
-        public void setType(int type) {
-            this.type = type;
-        }
-        public void setId(int id) {
-            this.id = id;
-        }
-        public void setCountry(String country) {
-            this.country = country;
-        }
-        public void setSunrise(int sunrise) {
-            this.sunrise = sunrise;
-        }
-        public void setSunset(int sunset) {
-            this.sunset = sunset;
-        }
-        public int getType() {
-            return type;
-        }
-        public int getId() {
-            return id;
-        }
-        public String getCountry() {
-            return country;
-        }
-        public int getSunrise() {
-            return sunrise;
-        }
-        public int getSunset() {
-            return sunset;
-        }
-    }
 
     public void setCoord(Coord coord) {
         this.coord = coord;
@@ -231,9 +196,6 @@ public class WeatherResponse {
     }
     public void setDt(int dt) {
         this.dt = dt;
-    }
-    public void setSys(Sys sys) {
-        this.sys = sys;
     }
     public void setTimezone(int timezone) {
         this.timezone = timezone;
@@ -270,9 +232,6 @@ public class WeatherResponse {
     }
     public int getDt() {
         return dt;
-    }
-    public Sys getSys() {
-        return sys;
     }
     public int getTimezone() {
         return timezone;

@@ -7,6 +7,7 @@ public class GameState {
     private String nextCardName;
     private String location;
     private Integer temperature;
+    private Integer humidity;
     private String nextLocation;
     private String log;
     public Boolean gameOver;
@@ -18,6 +19,7 @@ public class GameState {
         nextCardName = copy.nextCardName;
         location = copy.location;
         temperature = copy.temperature;
+        humidity = copy.humidity;
         nextLocation = copy.nextLocation;
         log = copy.log;
         gameOver = copy.gameOver;
@@ -30,6 +32,7 @@ public class GameState {
         nextCardName = "";
         location = "";
         temperature = 0;
+        humidity = 0;
         nextLocation = "";
         log = "";
         gameOver = false;
@@ -93,6 +96,14 @@ public class GameState {
 
     public void setTemperature(Integer temperature) {
         this.temperature = temperature;
+    }
+
+    public Integer getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(Integer humidity) {
+        this.humidity = humidity;
     }
 
     public void setNextLocation(String nextLocation) {

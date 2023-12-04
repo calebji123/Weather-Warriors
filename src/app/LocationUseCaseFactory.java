@@ -3,7 +3,6 @@ package app;
 import interface_adaptor.game.GameViewModel;
 import interface_adaptor.location.LocationController;
 import interface_adaptor.location.LocationPresenter;
-import interface_adaptor.location.LocationViewModel;
 import use_case.location.LocationDataAccessInterface;
 import use_case.location.LocationInputBoundary;
 import use_case.location.LocationInteractor;

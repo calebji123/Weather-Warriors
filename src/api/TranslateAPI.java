@@ -4,6 +4,7 @@ import entity.TranslationResponse;
 import okhttp3.OkHttpClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 public class TranslateAPI {
 
     public static String translate(String lang, String message) {

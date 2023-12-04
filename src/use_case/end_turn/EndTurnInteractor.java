@@ -20,23 +20,24 @@ public class EndTurnInteractor implements EndTurnInputBoundary {
         Integer damage = attack.modified(dataAccessObject.getBoard().getLocation());
         Deck deck = board.getDeck();
         deck.getActive().setHP(damage);
-        String message = "Boss attacked you! You took " + Integer.toString(damage) + " damage!";
+        String message = "Boss attacked " + deck.getActive().getCardName() + "! " + deck.getActive().getCardName() +  " took " + Integer.toString(damage) + " damage!";
         Boolean gameOver = false;
         if (deck.getActive().getHP() <= 0) {
-            String deathMessage = "Card has been defeated!";
+            String deathMessage = deck.getActive().getCardName() + " has been defeated!";
             deck.activeDeath();
-            message += "\n" + deathMessage;
+            message += "\r\n" + deathMessage;
         }
         if (deck.getDeckSize() <= 0) {
             String gameOverMessage = "You have been defeated!";
-            message += "\n" + gameOverMessage;
+            message += "\r\n" + gameOverMessage;
             gameOver = true;
         }
         dataAccessObject.saveToLog(message);
-        String nextCardName = "No card left";
+        String nextCardName = "No cards left";
         if (deck.hasNext()) {
             nextCardName = deck.getNext().getCardName();
         }
+        dataAccessObject.addTurn();
         EndTurnOutputData endTurnOutputData = new EndTurnOutputData(message, deck.getActive().getCardName(), deck.getActive().getHP(), nextCardName, opponent.getHP(), gameOver);
         endTurnOutputBoundary.prepareSuccessView(endTurnOutputData);
     }

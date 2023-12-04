@@ -1,16 +1,16 @@
 package entity;
 
 public class Board {
-    private boolean gameover = false;
     private Deck deck;
     private Opponent opponent;
-    public String logFilename;
+    private Integer turn;
 
     private Location location;
     public Board(Deck deck, Opponent enemy, Location location){
         this.deck = deck;
         this.opponent = enemy;
         this.location = location;
+        this.turn = 0;
     }
 
     public Deck getDeck(){
@@ -27,6 +27,14 @@ public class Board {
 
     public void setLocation(Location nextLocation){
         this.location = nextLocation;
+    }
+
+    public Integer getTurn(){
+        return this.turn;
+    }
+
+    public void setTurn(Integer turn){
+        this.turn = turn;
     }
 
 }
