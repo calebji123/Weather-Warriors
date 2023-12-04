@@ -3,6 +3,7 @@ package use_case.attack;
 import entity.Attack;
 import entity.Card;
 import entity.Opponent;
+import entity.SpecialAttack;
 
 public class AttackInteractor implements AttackInputBoundary{
     final AttackDataAccessInterface dataAccessObject;
@@ -18,13 +19,17 @@ public class AttackInteractor implements AttackInputBoundary{
         Integer attackId = attackInputData.getAttackIdentifier();
         Card card = dataAccessObject.getBoard().getDeck().getActive();
         Opponent opponent = dataAccessObject.getBoard().getOpponent();
-        Attack attack;
+        Integer damage;
         if (attackId == 0) {
+            Attack attack;
             attack = card.getRegularAttack();
+            damage = attack.getDmg();
+
         } else {
+            SpecialAttack attack;
             attack = card.getSpecialAttack();
+            damage = attack.modified(dataAccessObject.getBoard().getLocation());
         }
-        Integer damage = attack.getDmg();
         opponent.changeHP(damage);
 
         String message = card.getCardName() + " attacked Boss! Boss took " + Integer.toString(damage)

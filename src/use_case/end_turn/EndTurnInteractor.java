@@ -1,9 +1,6 @@
 package use_case.end_turn;
 
-import entity.Board;
-import entity.Attack;
-import entity.Deck;
-import entity.Opponent;
+import entity.*;
 
 public class EndTurnInteractor implements EndTurnInputBoundary {
     private final EndTurnOutputBoundary endTurnOutputBoundary;
@@ -19,8 +16,8 @@ public class EndTurnInteractor implements EndTurnInputBoundary {
     public void execute() {
         Board board = dataAccessObject.getBoard();
         Opponent opponent = board.getOpponent();
-        Attack attack = opponent.getAttack();
-        Integer damage = attack.getDmg();
+        SpecialAttack attack = opponent.getAttack();
+        Integer damage = attack.modified(dataAccessObject.getBoard().getLocation());
         Deck deck = board.getDeck();
         deck.getActive().setHP(damage);
         String message = "Boss attacked you! You took " + Integer.toString(damage) + " damage!";

@@ -5,7 +5,7 @@ import java.util.Random;
 
 public interface Opponent {
     final List<Attack> bossMoves = null;
-    Attack getAttack();
+    SpecialAttack getAttack();
 
     Integer getHP();
     void changeHP(Integer dmg);
