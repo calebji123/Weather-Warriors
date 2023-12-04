@@ -7,6 +7,7 @@ public class Location {
     private Double longitude;
     private Double latitude;
     private String nextLocationName;
+    private Double[] nextCoordinates;
 
     public Location(String locationName, Double latitude, Double longitude, Integer temperature, Integer humidity, String nextLocationName) {
         this.locationName = locationName;
@@ -17,7 +18,7 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public String getLocationName() {
+    public String getName() {
         return locationName;
     }
 
@@ -25,8 +26,40 @@ public class Location {
         return temperature;
     }
 
+    public int getModifiedTemperature(){
+        if (temperature > 308) {
+            return 3;
+        } else if (temperature > 300){
+            return 2;
+        } else if (temperature > 290) {
+            return 1;
+        } else if (temperature > 283) {
+            return  0;
+        } else if (temperature > 275) {
+            return -1;
+        } else if (temperature > 264) {
+            return -2;
+        } else {
+            return -3;
+        }
+    }
+
     public Integer getHumidity() {
         return humidity;
+    }
+
+    public int getModifiedHumidity() {
+        if (humidity > 90) {
+            return 2;
+        } else if (humidity > 60) {
+            return 1;
+        } else if (humidity > 40) {
+            return 0;
+        } else if (humidity > 15) {
+            return -1;
+        } else {
+            return -2;
+        }
     }
 
     public double getLongitude() {
@@ -39,28 +72,15 @@ public class Location {
 
     public String getNextLocationName(){return this.nextLocationName;}
 
-    public void setLocationName(String locationName) {
-        this.locationName = locationName;
+    public void next(Double longitude, Double latitude) {
+
     }
 
-    public void setTemperature(Integer temperature) {
-        this.temperature = temperature;
+    public String getLocationName() {
+        return this.locationName;
     }
 
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
+    public void setTemperature(int i) {
+        this.temperature = i;
     }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setNextLocationName(String nextLocationName) {
-        this.nextLocationName = nextLocationName;
-    }
-
 }
