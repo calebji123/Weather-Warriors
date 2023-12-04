@@ -211,7 +211,6 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         } catch (IOException e) {
             playerPictureLabel = new JLabel("Player Image could not load");
         }
-        System.out.println(gameState.getActiveCardHealth());
         playerPictureLabel.setAlignmentX(0.5f);
         playerName = new JLabel(gameState.getActiveCardName());
         playerName.setAlignmentX(0.5f);
@@ -297,7 +296,6 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         GameState state = (GameState) evt.getNewValue();
-        System.out.println(state.getActiveCardName());
         setFields(state);
     }
 
@@ -310,6 +308,5 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         nextLabel.setText("Next: " + state.getNextCardName());
         weather.setText("Temperature: " + state.getTemperature());
         logText.setText(state.getLog());
-        System.out.println(state.getLog());
     }
 }

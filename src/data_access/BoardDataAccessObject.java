@@ -49,13 +49,13 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
         Random rand = new Random();
         ArrayList<Card> cards = new ArrayList<>();
         for (int i = 9; i >=5; i--){
-            cards.add(cardList.get(rand.nextInt(i)));
+            cards.add(cardList.get(rand.nextInt(i)).cloneCard());
         }
         Deck deck = new Deck(cards);
         Opponent enemy = new TimeTravelingPoacher();
         Location place = new Location("Toronto", 0.0, 0.0, 5, 30, "Montreal");
         WeatherResponse weather = WeatherAPI.getWeather(place.getLatitude(), place.getLongitude());
-        place.setTemperature(new Double(weather.getMain().getTemp()).intValue());
+        place.setTemperature( ((Double) weather.getMain().getTemp()).intValue());
         board = new Board(deck, enemy, place);
     }
 

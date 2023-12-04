@@ -19,7 +19,9 @@ public class Card {
         this.regularAttack = new Attack(rAttack);
     }
 
-
+    public Card cloneCard() {
+        return new Card(this.CardName, this.regularAttack.getDmg(), this.specialAttack.getCode(), this.HP);
+    }
     public String getCardName(){return CardName;}
     public Integer getHP(){return HP;}
     public Boolean getDeathStatus(){return isDead;}
