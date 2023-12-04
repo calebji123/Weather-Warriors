@@ -7,6 +7,7 @@ public class Location {
     private Double longitude;
     private Double latitude;
     private String nextLocationName;
+    private Double[] nextCoordinates;
 
     public Location(String locationName, Double latitude, Double longitude, Integer temperature, Integer humidity, String nextLocationName) {
         this.locationName = locationName;
@@ -47,21 +48,17 @@ public class Location {
         return humidity;
     }
 
-    public int getModifiedHumidity(){
-        if (humidity > 308) {
-            return 3;
-        } else if (humidity > 300){
+    public int getModifiedHumidity() {
+        if (humidity > 90) {
             return 2;
-        } else if (humidity > 290) {
+        } else if (humidity > 60) {
             return 1;
-        } else if (humidity > 283) {
-            return  0;
-        } else if (humidity > 275) {
+        } else if (humidity > 40) {
+            return 0;
+        } else if (humidity > 15) {
             return -1;
-        } else if (humidity > 264) {
-            return -2;
         } else {
-            return -3;
+            return -2;
         }
     }
 
@@ -75,7 +72,7 @@ public class Location {
 
     public String getNextLocationName(){return this.nextLocationName;}
 
-    public void next() {
+    public void next(Double longitude, Double latitude) {
 
     }
 
