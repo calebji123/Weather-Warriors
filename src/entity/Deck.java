@@ -10,7 +10,12 @@ public class Deck {
     public Deck(List<Card> deck){
         this.deck = deck;
         this.active = deck.get(0);
-        this.next = deck.get(1);
+        this.active.activate();
+        this.next = null;
+        if (deck.size() > 1) {
+            this.next = deck.get(1);
+            this.next.makeNext();
+        }
     }
 
     public int getDeckSize(){return this.deck.size();}
@@ -32,7 +37,14 @@ public class Deck {
     public void activeDeath(){
         this.active.die();
         this.deck.remove(active);
-        this.shuffle();
+        if (getDeckSize() > 1) {
+            this.shuffle();
+        }
+        else {
+            this.next.activate();
+            this.active = this.next;
+            this.next = null;
+        }
     }
 
 }

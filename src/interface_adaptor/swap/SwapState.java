@@ -28,5 +28,6 @@ public class SwapState {
     public void setNextCardName(String name) {this.nextCardName = name;}
     public void setSwapError(String error) {this.swapError = error;}
     public String getSwapError() {return this.swapError;}
+    public Boolean hasError() {return this.hasError;}
     public void setHasError(Boolean hasError) {this.hasError = hasError;}
 }

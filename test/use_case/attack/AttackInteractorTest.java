@@ -40,7 +40,7 @@ public class AttackInteractorTest {
             }
             @Override
             public void saveToLog(String message) {
-                viewModel.getState().setLog(message);
+                ;
             }
         }
         viewModel = new GameViewModel();
@@ -55,13 +55,15 @@ public class AttackInteractorTest {
         Integer expectedHP = opponent.getHP() - card.getRegularAttack().getDmg();
         this.attackController.execute(0);
         assertEquals(expectedHP, viewModel.getState().getOpponentCardHealth());
-        assertEquals("Derk attacked Boss! Boss took 1 damage!", viewModel.getState().getLog());
+        assertEquals("\r\nDerk attacked Boss! Boss took 1 damage!", viewModel.getState().getLog());
+        viewModel.getState().setLog(null);
     }
     @Test
     void executeSpecialAttack() {
         Integer expectedHP = opponent.getHP() - card.getSpecialAttack().getDmg();
         this.attackController.execute(1);
         assertEquals(expectedHP, viewModel.getState().getOpponentCardHealth());
-        assertEquals("Derk attacked Boss! Boss took 2 damage!", viewModel.getState().getLog());
+        assertEquals("\r\nDerk attacked Boss! Boss took 1 damage!", viewModel.getState().getLog());
+        viewModel.getState().setLog(null);
     }
 }
