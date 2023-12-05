@@ -44,6 +44,5 @@ public class TimeTravelingPoacher implements Opponent {
 
     public Integer getHP(){return HP;}
     public void changeHP(Integer dmg){HP -= dmg;}
-    public String getImageFilePath(){return imageFilePath;}
 
 }
