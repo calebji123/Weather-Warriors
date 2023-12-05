@@ -22,7 +22,7 @@ public class SwapPresenter implements SwapOutputBoundary {
         gameState.setActiveCardName(data.getActiveCardName());
         gameState.setActiveCardHealth(data.getActiveCardHealth());
         gameState.setNextCardName(data.getNextCardName());
-        gameState.setLog(gameState.getLog() + data.getMessage());
+        gameState.setLog(gameState.getLog() +"\r\n"+ data.getMessage());
 
         gameViewModel.setState(gameState);
         gameViewModel.firePropertyChanged();

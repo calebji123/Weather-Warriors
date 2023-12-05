@@ -17,6 +17,8 @@ public class LocationPresenter implements LocationOutputBoundary {
         gameState.setLocation(locationOutputData.getLocationName());
         gameState.setTemperature(locationOutputData.getTemperature());
         gameState.setNextLocation(locationOutputData.getNextLocationName());
+        gameState.setHumidity(locationOutputData.getHumidity());
+        gameState.setLog(gameState.getLog() + "\r\n" + locationOutputData.getLog());
         gameViewModel.setState(gameState);
         gameViewModel.firePropertyChanged();
     }

@@ -2,16 +2,13 @@ package app;
 
 import interface_adaptor.ViewManagerModel;
 import interface_adaptor.attack.AttackController;
-import interface_adaptor.attack.AttackViewModel;
 import interface_adaptor.end_turn.EndTurnController;
-import interface_adaptor.end_turn.EndTurnViewModel;
 import interface_adaptor.exit.ExitController;
 import interface_adaptor.exit.ExitViewModel;
 import interface_adaptor.game.GameViewModel;
 import interface_adaptor.how_to_play.HowToPlayController;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
 import interface_adaptor.location.LocationController;
-import interface_adaptor.location.LocationViewModel;
 import interface_adaptor.swap.SwapController;
 import interface_adaptor.swap.SwapViewModel;
 import use_case.attack.AttackDataAccessInterface;

@@ -23,6 +23,7 @@ public class StartPresenter implements StartOutputBoundary {
         gameState.setLocation(outputData.getLocation());
         gameState.setTemperature(outputData.getTemperature());
         gameState.setNextLocation(outputData.getNextLocation());
+        gameState.setGameOver(false);
         gameViewModel.setState(gameState);
         gameViewModel.firePropertyChanged();
         viewManagerModel.setCurrentView(gameViewModel.getViewName());

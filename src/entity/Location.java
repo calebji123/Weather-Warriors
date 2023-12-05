@@ -9,13 +9,14 @@ public class Location {
     private String nextLocationName;
     private Double[] nextCoordinates;
 
-    public Location(String locationName, Double latitude, Double longitude, Integer temperature, Integer humidity, String nextLocationName) {
+    public Location(String locationName, Double latitude, Double longitude, Integer temperature, Integer humidity, String nextLocationName, Double nextLocationLatitude, Double nextLocationLongitude) {
         this.locationName = locationName;
         this.temperature = temperature;
         this.humidity = humidity;
         this.nextLocationName = nextLocationName;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.nextCoordinates = new Double[]{nextLocationLatitude, nextLocationLongitude};
     }
 
     public String getName() {
@@ -72,9 +73,7 @@ public class Location {
 
     public String getNextLocationName(){return this.nextLocationName;}
 
-    public void next(Double longitude, Double latitude) {
-
-    }
+    public Double[] getNextCoordinates(){return this.nextCoordinates;}
 
     public String getLocationName() {
         return this.locationName;
@@ -83,4 +82,5 @@ public class Location {
     public void setTemperature(int i) {
         this.temperature = i;
     }
+
 }

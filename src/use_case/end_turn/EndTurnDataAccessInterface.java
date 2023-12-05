@@ -4,6 +4,6 @@ import entity.Board;
 
 public interface EndTurnDataAccessInterface {
     Board getBoard();
-
     void saveToLog(String message);
+    void addTurn();
 }

@@ -32,4 +32,7 @@ public class SpecialAttack extends Attack{
         return modify(location);
     }
 
+    public int getCode(){
+        return this.code;
+    }
 }

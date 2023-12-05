@@ -27,16 +27,23 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
         this.startController = startController;
         howToPlayViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel("Menu Screen");
+        JLabel title = new JLabel("Weather Warriors");
+        title.setFont(title.getFont().deriveFont(32.0f));
         title.setAlignmentX(0.5f);
+        title.setBorder(BorderFactory.createEmptyBorder(30, 10, 50, 10));
 
         JPanel buttons = new JPanel();
+        buttons.setLayout(new BoxLayout(buttons, BoxLayout.Y_AXIS));
         howToPlay = new JButton(HowToPlayViewModel.BUTTON_LABEL);
+        howToPlay.setAlignmentX(0.5f);
         buttons.add(howToPlay);
         howToPlayFrench = new JButton("Comment jouer");
+        howToPlayFrench.setAlignmentX(0.5f);
         buttons.add(howToPlayFrench);
         start = new JButton("Start");
+        start.setAlignmentX(0.5f);
         buttons.add(start);
+        buttons.setAlignmentX(0.5f);
 
         howToPlay.addActionListener(
             new ActionListener() {
@@ -78,6 +85,7 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
 
         this.add(title);
         this.add(buttons);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
 

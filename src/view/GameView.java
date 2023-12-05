@@ -1,18 +1,14 @@
 package view;
 
 import interface_adaptor.attack.AttackController;
-import interface_adaptor.attack.AttackViewModel;
 import interface_adaptor.end_turn.EndTurnController;
-import interface_adaptor.end_turn.EndTurnViewModel;
 import interface_adaptor.exit.ExitController;
 import interface_adaptor.exit.ExitViewModel;
 import interface_adaptor.game.GameState;
 import interface_adaptor.game.GameViewModel;
 import interface_adaptor.how_to_play.HowToPlayController;
-import interface_adaptor.how_to_play.HowToPlayState;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
 import interface_adaptor.location.LocationController;
-import interface_adaptor.location.LocationViewModel;
 import interface_adaptor.swap.SwapController;
 import interface_adaptor.swap.SwapViewModel;
 
@@ -52,7 +48,8 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     private final JLabel nextLocationLabel;
     private final JLabel locationLabel;
     private final JLabel nextLabel;
-    private final JLabel weather;
+    private final JLabel temperature;
+    private final JLabel humidity;
     private final JTextArea logText;
 
     public GameView(EndTurnController endTurnController,
@@ -102,13 +99,15 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
 
         JPanel locationPanel = new JPanel();
         locationPanel.setLayout(new BoxLayout(locationPanel, BoxLayout.Y_AXIS));
-        JLabel locationTitle = new JLabel("Location and Weather:");
+        JLabel locationTitle = new JLabel("Location:");
         locationLabel = new JLabel(gameState.getLocation());
-        weather = new JLabel("Temperature: " + gameState.getTemperature());
+        temperature = new JLabel("Temperature: " + gameState.getTemperature());
+        humidity = new JLabel("Humidity: " + gameState.getHumidity());
         nextLocationLabel = new JLabel("Next location: " + gameState.getNextLocation());
         locationPanel.add(locationTitle);
         locationPanel.add(locationLabel);
-        locationPanel.add(weather);
+        locationPanel.add(temperature);
+        locationPanel.add(humidity);
         locationPanel.add(nextLocationLabel);
 
         JPanel sidebar = new JPanel();
@@ -211,7 +210,6 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         } catch (IOException e) {
             playerPictureLabel = new JLabel("Player Image could not load");
         }
-        System.out.println(gameState.getActiveCardHealth());
         playerPictureLabel.setAlignmentX(0.5f);
         playerName = new JLabel(gameState.getActiveCardName());
         playerName.setAlignmentX(0.5f);
@@ -247,7 +245,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BorderLayout());
         rightPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
-        rightPanel.setPreferredSize(new Dimension(200, 600));
+        rightPanel.setPreferredSize(new Dimension(250, 600));
 
         JPanel log = new JPanel();
         log.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -258,7 +256,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         logText.setPreferredSize(new Dimension(200, 10000));
         log.add(logText);
         JScrollPane logScroll = new JScrollPane(log);
-        logScroll.setPreferredSize(new Dimension(200, 250));
+        logScroll.setPreferredSize(new Dimension(250, 250));
 
 
         JPanel deck = new JPanel();
@@ -297,7 +295,6 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         GameState state = (GameState) evt.getNewValue();
-        System.out.println(state.getActiveCardName());
         setFields(state);
     }
 
@@ -308,8 +305,8 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         playerHealth.setText(state.getActiveCardHealth().toString() + " hp");
         enemyHealth.setText(state.getOpponentCardHealth().toString() + " hp");
         nextLabel.setText("Next: " + state.getNextCardName());
-        weather.setText("Temperature: " + state.getTemperature());
+        temperature.setText("Temperature: " + state.getTemperature());
+        humidity.setText("Humidity: " + state.getHumidity());
         logText.setText(state.getLog());
-        System.out.println(state.getLog());
     }
 }

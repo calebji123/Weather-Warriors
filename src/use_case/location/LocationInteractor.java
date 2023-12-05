@@ -15,11 +15,13 @@ public class LocationInteractor implements LocationInputBoundary {
 
     @Override
     public void execute() {
+        String log = "";
+        if (dataAccessObject.getTurn() % 3 == 0){
+            dataAccessObject.nextLocation();
+            log = "Location changed to " + dataAccessObject.getLocation().getLocationName() + "\r\n";
+        }
         Location location = dataAccessObject.getLocation();
-        //TODO implement get next location
-//        location.next();
-        WeatherResponse response = WeatherAPI.getWeather(location.getLongitude(), location.getLatitude());
-        LocationOutputData outputData = new LocationOutputData(location.getLocationName(), new Double(response.getMain().getTemp()).intValue(), response.getMain().getHumidity(), location.getNextLocationName());
+        LocationOutputData outputData = new LocationOutputData(location.getLocationName(), location.getTemperature(), location.getHumidity(), location.getNextLocationName(), log);
         presenter.prepareView(outputData);
     }
 }

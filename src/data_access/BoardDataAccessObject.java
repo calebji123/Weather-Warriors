@@ -19,6 +19,9 @@ import java.util.Random;
 
 public class BoardDataAccessObject implements EndTurnDataAccessInterface, AttackDataAccessInterface, SwapDataAccessInterface, LocationDataAccessInterface, StartDataAccessInterface {
     private ArrayList<Card> cardList;
+    private ArrayList<String> locations;
+    private ArrayList<Double> latitudes;
+    private ArrayList<Double> longitudes;
     private Board board;
     private String log;
 
@@ -31,6 +34,18 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
         cardList = new ArrayList<>();
         for (String card : cardnames) {
             cardList.add(readCard(card));
+        }
+        locations = new ArrayList<>();
+        latitudes = new ArrayList<>();
+        longitudes = new ArrayList<>();
+        String[] locationnames = {"Toronto", "Montreal", "Vancouver", "New York", "Los Angeles", "London", "Paris", "Tokyo", "Sydney", "Beijing"};
+        Double[] latitudes = {43.6532, 45.5017, 49.2827, 40.7128, 34.0522, 51.5074, 48.8566, 35.6762, -33.8688, 39.9042};
+        Double[] longitudes = {-79.3832, -73.5673, -123.1207, -74.0060, -118.2437, -0.1278, 2.3522, 139.6503, 151.2093, 116.4074};
+
+        for (int i = 0; i < locationnames.length; i++) {
+            this.locations.add(locationnames[i]);
+            this.latitudes.add(latitudes[i]);
+            this.longitudes.add(longitudes[i]);
         }
     }
 
@@ -49,14 +64,24 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
         Random rand = new Random();
         ArrayList<Card> cards = new ArrayList<>();
         for (int i = 9; i >=5; i--){
-            cards.add(cardList.get(rand.nextInt(i)));
+            cards.add(cardList.get(rand.nextInt(i)).cloneCard());
         }
         Deck deck = new Deck(cards);
         Opponent enemy = new TimeTravelingPoacher();
-        Location place = new Location("Toronto", 0.0, 0.0, 5, 30, "Montreal");
-        WeatherResponse weather = WeatherAPI.getWeather(place.getLatitude(), place.getLongitude());
-        place.setTemperature(new Double(weather.getMain().getTemp()).intValue());
+        int index = randomLocation("");
+        WeatherResponse response = WeatherAPI.getWeather(latitudes.get(index), longitudes.get(index));
+        int nextIndex = randomLocation(locations.get(index));
+        Location place = new Location(locations.get(index), latitudes.get(index), longitudes.get(index), ((Double) (response.getMain().getTemp() - 273)).intValue(), response.getMain().getHumidity(), locations.get(nextIndex), latitudes.get(nextIndex), longitudes.get(nextIndex) );
         board = new Board(deck, enemy, place);
+    }
+
+    private int randomLocation(String currentLocation) {
+        Random rand = new Random();
+        int index = rand.nextInt(locations.size());
+        while (locations.get(index).equals(currentLocation)) {
+            index = rand.nextInt(locations.size());
+        }
+        return index;
     }
 
     @Override
@@ -91,5 +116,24 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
     @Override
     public Location getLocation() {
         return this.board.getLocation();
+    }
+
+    @Override
+    public void nextLocation() {
+        Double[] nextLocation = this.board.getLocation().getNextCoordinates();
+        WeatherResponse response = WeatherAPI.getWeather(nextLocation[0], nextLocation[1]);
+        int nextIndex = randomLocation(this.board.getLocation().getLocationName());
+        Location place = new Location(this.board.getLocation().getNextLocationName(), nextLocation[0], nextLocation[1], ((Double) (response.getMain().getTemp()-273)).intValue(), response.getMain().getHumidity(), locations.get(nextIndex), latitudes.get(nextIndex), longitudes.get(nextIndex) );
+        this.board.setLocation(place);
+    }
+
+    @Override
+    public void addTurn() {
+        this.board.setTurn(this.board.getTurn() + 1);
+    }
+
+    @Override
+    public Integer getTurn() {
+        return this.board.getTurn();
     }
 }
