@@ -1,7 +1,7 @@
 {
   "Name":"Swine",
-  "HP": "40",
-  "Attack": "12",
+  "HP": "60",
+  "Attack": "15",
   "Modifier code": "72",
   "Sprite": ""
 }
