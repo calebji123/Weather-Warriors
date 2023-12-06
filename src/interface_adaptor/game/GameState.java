@@ -13,20 +13,6 @@ public class GameState {
     private Boolean gameOver;
     private Integer deckSize;
 
-    public GameState(GameState copy) {
-        activeCardName = copy.activeCardName;
-        activeCardHealth = copy.activeCardHealth;
-        opponentCardHealth = copy.opponentCardHealth;
-        nextCardName = copy.nextCardName;
-        location = copy.location;
-        temperature = copy.temperature;
-        humidity = copy.humidity;
-        nextLocation = copy.nextLocation;
-        log = copy.log;
-        gameOver = copy.gameOver;
-        deckSize = copy.deckSize;
-    }
-
     public GameState() {
         activeCardName = "";
         activeCardHealth = 0;

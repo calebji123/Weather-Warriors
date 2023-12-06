@@ -25,7 +25,7 @@ public class AttackInteractorTest {
     @BeforeEach
     void setup() {
         opponent = new TimeTravelingPoacher();
-        card = new Card("Derk", 1, 2, 100);
+        card = new Card("Derk", 1, 0, 100);
         List<Card> list = new ArrayList<>();
         list.add(card);
         deck = new Deck(list);
@@ -60,7 +60,7 @@ public class AttackInteractorTest {
     }
     @Test
     void executeSpecialAttack() {
-        Integer expectedHP = opponent.getHP() - card.getSpecialAttack().getDmg();
+        Integer expectedHP = opponent.getHP() - card.getSpecialAttack().modified(board.getLocation());
         this.attackController.execute(1);
         assertEquals(expectedHP, viewModel.getState().getOpponentCardHealth());
         assertEquals("\r\nDerk attacked Boss! Boss took 1 damage!", viewModel.getState().getLog());

@@ -28,7 +28,4 @@ public class WeatherAPI {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(getWeather(-79.3817, 43.6459));
-    }
 }

@@ -5,7 +5,6 @@ import interface_adaptor.game.GameViewModel;
 import interface_adaptor.how_to_play.HowToPlayController;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
 import interface_adaptor.start.StartController;
-import interface_adaptor.start.StartViewModel;
 import use_case.how_to_play.HowToPlayDataAccessInterface;
 import use_case.start.StartDataAccessInterface;
 import view.MenuView;

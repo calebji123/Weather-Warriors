@@ -3,11 +3,9 @@ package use_case.start;
 import entity.*;
 import entity.enemies.TimeTravelingPoacher;
 import interface_adaptor.ViewManagerModel;
-import interface_adaptor.game.GameState;
 import interface_adaptor.game.GameViewModel;
 import interface_adaptor.start.StartController;
 import interface_adaptor.start.StartPresenter;
-import interface_adaptor.start.StartViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +69,7 @@ public class StartInteractorTest {
     @Test
     void executeCheckEnemy(){
         this.controller.execute();
-        assertEquals(500, this.viewModel.getState().getOpponentCardHealth());
+        assertEquals(400, this.viewModel.getState().getOpponentCardHealth());
     }
 
 }

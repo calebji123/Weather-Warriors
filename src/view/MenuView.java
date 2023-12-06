@@ -4,7 +4,6 @@ import interface_adaptor.how_to_play.HowToPlayController;
 import interface_adaptor.how_to_play.HowToPlayState;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
 import interface_adaptor.start.StartController;
-import interface_adaptor.start.StartViewModel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
