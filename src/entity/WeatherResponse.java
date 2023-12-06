@@ -9,9 +9,12 @@ public class WeatherResponse {
     private String base;
     private Main main;
     private int visibility;
+    private Wind wind;
+    private Clouds clouds;
     private int dt;
     private int timezone;
     private int id;
+    private Rain rain;
     private String name;
     private int cod;
     public static class Coord {
@@ -119,6 +122,57 @@ public class WeatherResponse {
         }
 
     }
+    public static class Wind {
+        private double speed;
+        private int deg;
+        private double gust;
+        public void setSpeed(double speed) {
+            this.speed = speed;
+        }
+        public void setDeg(int deg) {
+            this.deg = deg;
+        }
+        public double getGust() {
+            return gust;
+        }
+        public double getSpeed() {
+            return speed;
+        }
+        public int getDeg() {
+            return deg;
+        }
+        public void setGust(double gust) {
+            this.gust = gust;
+        }
+    }
+    public static class Clouds {
+        private int all;
+        public void setAll(int all) {
+            this.all = all;
+        }
+        public int getAll() {
+            return all;
+        }
+    }
+
+    public static class Rain {
+        private String duration;
+        private Double depth;
+        public void setDuration(String duration){
+            this.duration = duration;
+        }
+        public void setDepth(Double depth){
+            this.depth = depth;
+        }
+        public String getDuration(){
+            return this.duration;
+        }
+        public Double getDepth(){
+            return this.depth;
+        }
+    }
+
+
     public void setCoord(Coord coord) {
         this.coord = coord;
     }
@@ -133,6 +187,12 @@ public class WeatherResponse {
     }
     public void setVisibility(int visibility) {
         this.visibility = visibility;
+    }
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
+    public void setClouds(Clouds clouds) {
+        this.clouds = clouds;
     }
     public void setDt(int dt) {
         this.dt = dt;
@@ -149,7 +209,40 @@ public class WeatherResponse {
     public void setCod(int cod) {
         this.cod = cod;
     }
+    public Coord getCoord() {
+        return coord;
+    }
+    public Weather[] getWeather() {
+        return weather;
+    }
+    public String getBase() {
+        return base;
+    }
     public Main getMain() {
         return main;
+    }
+    public int getVisibility() {
+        return visibility;
+    }
+    public Wind getWind() {
+        return wind;
+    }
+    public Clouds getClouds() {
+        return clouds;
+    }
+    public int getDt() {
+        return dt;
+    }
+    public int getTimezone() {
+        return timezone;
+    }
+    public int getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getCod() {
+        return cod;
     }
 }
