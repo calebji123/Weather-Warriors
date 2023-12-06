@@ -37,7 +37,7 @@ public class SwapInteractorTest {
         list.add(card2);
         deck = new Deck(list);
         board = new Board(deck, opponent, new Location("Uoft", 0.0, 0.0, 0, 0,
-                "UTM"));
+                "UTM", 0.0, 0.0));
 
         class MockDataAccess implements SwapDataAccessInterface {
             @Override
@@ -85,15 +85,23 @@ public class SwapInteractorTest {
     }
 
     @Test
-    void executeOneCardLeft() {
-        gameViewModel.getState().setActiveCardName(card1.getCardName());
-        gameViewModel.getState().setNextCardName(card2.getCardName());
+    void testOneCardLeft() {
+        gameViewModel.getState().setActiveCardName(deck.getActive().getCardName());
+        gameViewModel.getState().setNextCardName(deck.getNext().getCardName());
         deck.activeDeath();
         gameViewModel.getState().setActiveCardName(deck.getActive().getCardName());
         assertEquals(card2.getCardName(), gameViewModel.getState().getActiveCardName());
         swapController.execute();
         assertEquals("There are no more cards in your deck!",swapViewModel.getState().getSwapError());
         assert swapViewModel.getState().hasError();
+    }
+
+    @Test
+    void testLog() {
+        gameViewModel.getState().setActiveCardName(deck.getActive().getCardName());
+        gameViewModel.getState().setNextCardName(deck.getNext().getCardName());
+        swapController.execute();
+        assertEquals("\r\nSwapped to Derk2!", gameViewModel.getState().getLog());
     }
 }
 

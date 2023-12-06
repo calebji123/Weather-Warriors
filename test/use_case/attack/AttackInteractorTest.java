@@ -30,7 +30,7 @@ public class AttackInteractorTest {
         list.add(card);
         deck = new Deck(list);
         board = new Board(deck, opponent, new Location("Uoft",0.0,0.0,0,0,
-                "UTM"));
+                "UTM", 0.0, 0.0));
 
         class MockDataAccess implements AttackDataAccessInterface {
 
@@ -51,19 +51,28 @@ public class AttackInteractorTest {
     }
 
     @Test
-    void executeNormalAttack() {
+    void testNormalAttack() {
         Integer expectedHP = opponent.getHP() - card.getRegularAttack().getDmg();
-        this.attackController.execute(0);
+        attackController.execute(0);
         assertEquals(expectedHP, viewModel.getState().getOpponentCardHealth());
         assertEquals("\r\nDerk attacked Boss! Boss took 1 damage!", viewModel.getState().getLog());
         viewModel.getState().setLog(null);
     }
     @Test
-    void executeSpecialAttack() {
+    void testSpecialAttack() {
         Integer expectedHP = opponent.getHP() - card.getSpecialAttack().getDmg();
-        this.attackController.execute(1);
+        attackController.execute(1);
         assertEquals(expectedHP, viewModel.getState().getOpponentCardHealth());
         assertEquals("\r\nDerk attacked Boss! Boss took 1 damage!", viewModel.getState().getLog());
         viewModel.getState().setLog(null);
+    }
+
+    @Test
+    void testBossDefeated() {
+        while (opponent.getHP() > 0) {
+            attackController.execute(0);
+        }
+        assertEquals(0, opponent.getHP());
+        assert viewModel.getState().getGameOver();
     }
 }

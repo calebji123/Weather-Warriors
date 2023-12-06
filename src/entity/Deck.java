@@ -18,8 +18,6 @@ public class Deck {
             this.next = deck.get(1);
             this.next.makeNext();
         }
-        System.out.println("active: " + this.active.getCardName());
-        System.out.println("next: " + this.next.getCardName());
     }
 
     public int getDeckSize(){return deckSize;}
@@ -32,21 +30,15 @@ public class Deck {
             this.active = this.next;
             this.active.activate();
             int count = 0;
-            System.out.println(deck);
-            System.out.println(deck.size());
             while (this.active == this.next && count < 100){
-                System.out.println("Shuffling");
                 Random ran = new Random();
                 Card candidate = this.deck.get(ran.nextInt(this.deck.size()));
-                System.out.println("trying: " + candidate.getCardName() + " death: " + candidate.getDeathStatus() + " active: " + candidate.getActiveStatus());
                 if (!candidate.getDeathStatus() && !candidate.getActiveStatus()) {
                     this.next = candidate;
                     this.next.makeNext();
                 }
                 count += 1;
             }
-            System.out.println("active: " + this.active.getCardName());
-            System.out.println("next: " + this.next.getCardName());
         }
     }
     public void activeDeath(){
@@ -61,5 +53,4 @@ public class Deck {
             this.next = null;
         }
     }
-
 }
