@@ -20,6 +20,7 @@ public class EndTurnPresenter implements EndTurnOutputBoundary {
         gameState.setNextCardName(outputData.getNextCardName());
         gameState.setOpponentCardHealth(outputData.getBossHealth());
         gameState.setGameOver(outputData.getGameEnded());
+        gameState.setDeckSize(outputData.getDeckSize());
         gameViewModel.setState(gameState);
         gameViewModel.firePropertyChanged();
     }

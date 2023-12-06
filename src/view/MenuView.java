@@ -51,8 +51,12 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource().equals(howToPlay)) {
                         howToPlayController.execute("en");
-
-                        JOptionPane.showMessageDialog(null, howToPlayViewModel.getState().getMessage());
+                        JTextArea textArea = new JTextArea(howToPlayViewModel.getState().getMessage());
+                        textArea.setLineWrap(true);
+                        textArea.setWrapStyleWord(true);
+                        JScrollPane scrollPane = new JScrollPane(textArea);
+                        scrollPane.setPreferredSize(new java.awt.Dimension(600, 600));
+                        JOptionPane.showMessageDialog(null, scrollPane);
                     }
                 }
             }
@@ -64,8 +68,12 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource().equals(howToPlayFrench)) {
                         howToPlayController.execute("FR");
-
-                        JOptionPane.showMessageDialog(null, howToPlayViewModel.getState().getMessage());
+                        JTextArea textArea = new JTextArea(howToPlayViewModel.getState().getMessage());
+                        textArea.setLineWrap(true);
+                        textArea.setWrapStyleWord(true);
+                        JScrollPane scrollPane = new JScrollPane(textArea);
+                        scrollPane.setPreferredSize(new java.awt.Dimension(600, 600));
+                        JOptionPane.showMessageDialog(null, scrollPane);
                     }
                 }
             }

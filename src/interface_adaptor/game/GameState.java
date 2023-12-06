@@ -10,7 +10,8 @@ public class GameState {
     private Integer humidity;
     private String nextLocation;
     private String log;
-    public Boolean gameOver;
+    private Boolean gameOver;
+    private Integer deckSize;
 
     public GameState(GameState copy) {
         activeCardName = copy.activeCardName;
@@ -23,6 +24,7 @@ public class GameState {
         nextLocation = copy.nextLocation;
         log = copy.log;
         gameOver = copy.gameOver;
+        deckSize = copy.deckSize;
     }
 
     public GameState() {
@@ -36,6 +38,7 @@ public class GameState {
         nextLocation = "";
         log = "";
         gameOver = false;
+        deckSize = 5;
     }
 
     public String getActiveCardName() {
@@ -116,5 +119,13 @@ public class GameState {
 
     public void setGameOver(Boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    public Integer getDeckSize() {
+        return deckSize;
+    }
+
+    public void setDeckSize(Integer deckSize) {
+        this.deckSize = deckSize;
     }
 }

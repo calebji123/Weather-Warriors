@@ -29,15 +29,13 @@ public class Deck {
             this.active.deactivate();
             this.active = this.next;
             this.active.activate();
-            int count = 0;
-            while (this.active == this.next && count < 100){
+            while (this.active == this.next){
                 Random ran = new Random();
                 Card candidate = this.deck.get(ran.nextInt(this.deck.size()));
                 if (!candidate.getDeathStatus() && !candidate.getActiveStatus()) {
                     this.next = candidate;
                     this.next.makeNext();
                 }
-                count += 1;
             }
         }
     }

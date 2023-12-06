@@ -28,21 +28,22 @@ public class Location {
     }
 
     public int getModifiedTemperature(){
-        if (temperature > 308) {
-            return 3;
-        } else if (temperature > 300){
-            return 2;
-        } else if (temperature > 290) {
-            return 1;
-        } else if (temperature > 283) {
-            return  0;
-        } else if (temperature > 275) {
-            return -1;
-        } else if (temperature > 264) {
-            return -2;
-        } else {
-            return -3;
-        }
+//        if (temperature > 308) {
+//            return 3;
+//        } else if (temperature > 300){
+//            return 2;
+//        } else if (temperature > 290) {
+//            return 1;
+//        } else if (temperature > 283) {
+//            return  0;
+//        } else if (temperature > 275) {
+//            return -1;
+//        } else if (temperature > 264) {
+//            return -2;
+//        } else {
+//            return -3;
+//        }
+        return (int) (temperature / 2) - 5;
     }
 
     public Integer getHumidity() {
@@ -50,17 +51,18 @@ public class Location {
     }
 
     public int getModifiedHumidity() {
-        if (humidity > 90) {
-            return 2;
-        } else if (humidity > 60) {
-            return 1;
-        } else if (humidity > 40) {
-            return 0;
-        } else if (humidity > 15) {
-            return -1;
-        } else {
-            return -2;
-        }
+//        if (humidity > 90) {
+//            return 2;
+//        } else if (humidity > 60) {
+//            return 1;
+//        } else if (humidity > 40) {
+//            return 0;
+//        } else if (humidity > 15) {
+//            return -1;
+//        } else {
+//            return -2;
+//        }
+        return (int) (humidity / 5) - 10;
     }
 
     public double getLongitude() {

@@ -10,19 +10,13 @@ public class SpecialAttack extends Attack{
     }
 
     private int modify(Location location){
-        if (this.code / 10 == 1){
+        if (this.code / 10 == 1 || this.code / 10 == 4 || this.code / 10 == 5){
             this.modifier = this.code % 10 * location.getModifiedTemperature(); // + something based on the location
-        } else if (this.code / 10 == 2){
+        } else if (this.code / 10 == 2 || this.code / 10 == 3){
             this.modifier = this.code % 10 * location.getModifiedHumidity();
-//        } else if (this.code / 10 == 3){
-            //this.modifier = this.code % 10 * location.getWind();
-  //      } else if (this.code / 10 == 4){
-            //this.modifier = this.code % 10 * location.getAirPressure();
-    //    } else if (this.code / 10 == 5){
-            //this.modifier = this.code % 10 * location.getSeaLevel();
         } else if (this.code / 10 == 6){
             this.modifier = this.code % 10 * location.getModifiedTemperature() * -1;
-        } else if (this.code / 10 == 7) {
+        } else {
             this.modifier = this.code % 10 * location.getModifiedHumidity() * -1;
         }
         return Math.max(this.dmg + this.modifier, 1);
