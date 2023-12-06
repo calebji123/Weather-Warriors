@@ -1,7 +1,7 @@
 {
   "Name":"Emperor Penguin",
-  "HP": "24",
+  "HP": "25",
   "Attack": "7",
-  "Modifier code": "62",
+  "Modifier code": "63",
   "Sprite": ""
 }
