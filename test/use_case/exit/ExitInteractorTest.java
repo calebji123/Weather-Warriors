@@ -22,11 +22,13 @@ public class ExitInteractorTest {
         exitViewModel = new ExitViewModel();
         exitPresenter = new ExitPresenter(exitViewModel,viewManagerModel);
         exitInteractor = new ExitInteractor(exitPresenter);
+        exitController = new ExitController(exitInteractor);
     }
 
     @Test
     void testViewChanged() {
-        exitInteractor.execute();
+        viewManagerModel.setCurrentView("start");
+        exitController.execute();
         assertEquals("menu", viewManagerModel.getCurrentView());
     }
 }
