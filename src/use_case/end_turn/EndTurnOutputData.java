@@ -8,13 +8,16 @@ public class EndTurnOutputData {
     private final Integer bossHealth;
     private final Boolean gameEnded;
 
-    public EndTurnOutputData(String message, String activeCardName, Integer activeCardHealth, String nextCardName, Integer bossHealth, Boolean gameEnded) {
+    private final Integer deckSize;
+
+    public EndTurnOutputData(String message, String activeCardName, Integer activeCardHealth, String nextCardName, Integer bossHealth, Boolean gameEnded, Integer deckSize) {
         this.message = message;
         this.activeCardName = activeCardName;
         this.activeCardHealth = activeCardHealth;
         this.nextCardName = nextCardName;
         this.bossHealth = bossHealth;
         this.gameEnded = gameEnded;
+        this.deckSize = deckSize;
     }
 
     public String getMessage() {
@@ -39,5 +42,9 @@ public class EndTurnOutputData {
 
     public Boolean getGameEnded() {
         return gameEnded;
+    }
+
+    public Integer getDeckSize() {
+        return deckSize;
     }
 }

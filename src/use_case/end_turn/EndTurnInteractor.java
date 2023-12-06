@@ -38,7 +38,7 @@ public class EndTurnInteractor implements EndTurnInputBoundary {
             nextCardName = deck.getNext().getCardName();
         }
         dataAccessObject.addTurn();
-        EndTurnOutputData endTurnOutputData = new EndTurnOutputData(message, deck.getActive().getCardName(), deck.getActive().getHP(), nextCardName, opponent.getHP(), gameOver);
+        EndTurnOutputData endTurnOutputData = new EndTurnOutputData(message, deck.getActive().getCardName(), deck.getActive().getHP(), nextCardName, opponent.getHP(), gameOver, deck.getDeckSize());
         endTurnOutputBoundary.prepareSuccessView(endTurnOutputData);
     }
 }

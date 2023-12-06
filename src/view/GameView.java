@@ -23,6 +23,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class GameView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -51,6 +52,10 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     private final JLabel temperature;
     private final JLabel humidity;
     private final JTextArea logText;
+    private final JLabel deckLabel;
+    private final JLabel playerPictureLabel;
+
+    private final JLabel deckPictureLabel;
 
     public GameView(EndTurnController endTurnController,
                     HowToPlayController howToPlayController, HowToPlayViewModel howToPlayViewModel,
@@ -58,6 +63,8 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
                     SwapController swapController, SwapViewModel swapViewModel,
                     ExitController exitController, ExitViewModel exitViewModel,
                     LocationController locationController, GameViewModel gameViewModel) {
+        JLabel deckPictureLabel1;
+        JLabel playerPictureLabel1;
 
         this.endTurnController = endTurnController;
         this.howToPlayController = howToPlayController;
@@ -123,8 +130,12 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource().equals(information)) {
                         howToPlayController.execute("EN");
-
-                        JOptionPane.showMessageDialog(null, howToPlayViewModel.getState().getMessage());
+                        JTextArea textArea = new JTextArea(howToPlayViewModel.getState().getMessage());
+                        textArea.setLineWrap(true);
+                        textArea.setWrapStyleWord(true);
+                        JScrollPane scrollPane = new JScrollPane(textArea);
+                        scrollPane.setPreferredSize(new java.awt.Dimension(600, 600));
+                        JOptionPane.showMessageDialog(null, scrollPane);
                     }
                 }
             }
@@ -176,12 +187,15 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
                 public void actionPerformed(ActionEvent e) {
                     if (e.getSource().equals(swap)) {
                         swapController.execute();
-
-                        endTurnController.execute();
-                        if (gameState.getGameOver()){
-                            JOptionPane.showMessageDialog(null, "Game Over, you lost");
+                        if (swapViewModel.getState().hasError()) {
+                            JOptionPane.showMessageDialog(null, swapViewModel.getState().getSwapError());
                         } else {
-                            locationController.execute();
+                            endTurnController.execute();
+                            if (gameState.getGameOver()){
+                                JOptionPane.showMessageDialog(null, "Game Over, you lost");
+                            } else {
+                                locationController.execute();
+                            }
                         }
                     }
                 }
@@ -202,14 +216,14 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
 
         JPanel playerPanel = new JPanel();
         playerPanel.setLayout(new BoxLayout(playerPanel, BoxLayout.Y_AXIS));
-        JLabel playerPictureLabel;
         try {
             BufferedImage playerPicture = ImageIO.read(new File("src/assets/capybara.jpg"));
-            playerPictureLabel = new JLabel(new ImageIcon(playerPicture
+            playerPictureLabel1 = new JLabel(new ImageIcon(playerPicture
                     .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
         } catch (IOException e) {
-            playerPictureLabel = new JLabel("Player Image could not load");
+            playerPictureLabel1 = new JLabel("Player Image could not load");
         }
+        playerPictureLabel = playerPictureLabel1;
         playerPictureLabel.setAlignmentX(0.5f);
         playerName = new JLabel(gameState.getActiveCardName());
         playerName.setAlignmentX(0.5f);
@@ -230,7 +244,7 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
             enemyPictureLabel = new JLabel("Opponent Image could not load");
         }
         enemyPictureLabel.setAlignmentX(0.5f);
-        JLabel enemyName = new JLabel("Capybara Boss");
+        JLabel enemyName = new JLabel("TimeTravelingPoacher");
         enemyName.setAlignmentX(0.5f);
         enemyHealth = new JLabel(gameState.getOpponentCardHealth().toString() + " hp");
         enemyHealth.setAlignmentX(0.5f);
@@ -261,16 +275,16 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
 
         JPanel deck = new JPanel();
         deck.setLayout(new BoxLayout(deck, BoxLayout.Y_AXIS));
-        JLabel deckPictureLabel;
         try {
             BufferedImage nextPicture = ImageIO.read(new File("src/assets/kangaroo.jpg"));
-            deckPictureLabel = new JLabel(new ImageIcon(nextPicture
-                    .getScaledInstance(150, 200, Image.SCALE_SMOOTH)));
+            deckPictureLabel1 = new JLabel(new ImageIcon(nextPicture
+                    .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
         } catch (IOException e) {
-            deckPictureLabel = new JLabel("Deck Image could not load");
+            deckPictureLabel1 = new JLabel("Deck Image could not load");
         }
+        deckPictureLabel = deckPictureLabel1;
         nextLabel = new JLabel("Next: " + gameState.getNextCardName());
-        JLabel deckLabel = new JLabel("Deck: 10 cards");
+        deckLabel = new JLabel("Deck: " + gameState.getDeckSize() + " cards");
         deck.add(nextLabel);
         deck.add(deckPictureLabel);
         deck.add(deckLabel);
@@ -308,5 +322,33 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
         temperature.setText("Temperature: " + state.getTemperature());
         humidity.setText("Humidity: " + state.getHumidity());
         logText.setText(state.getLog());
+        deckLabel.setText("Deck: " + state.getDeckSize() + " cards");
+        try {
+            BufferedImage playerPicture = ImageIO.read(new File("src/assets/"+state.getActiveCardName()+".jpg"));
+            playerPictureLabel.setIcon(new ImageIcon(playerPicture
+                    .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+            playerPictureLabel.setText("");
+        } catch (IOException e) {
+            playerPictureLabel.setText("Player Image could not load");
+        }
+        if (!Objects.equals(state.getNextCardName(), "No cards left")) {
+            try {
+                BufferedImage nextPicture = ImageIO.read(new File("src/assets/"+state.getNextCardName()+".jpg"));
+                deckPictureLabel.setIcon(new ImageIcon(nextPicture
+                        .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                deckPictureLabel.setText("");
+            } catch (IOException e) {
+                deckPictureLabel.setText("Deck Image could not load");
+            }
+        } else {
+            try {
+                BufferedImage nextPicture = ImageIO.read(new File("src/assets/deck.png"));
+                deckPictureLabel.setIcon(new ImageIcon(nextPicture
+                        .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                deckPictureLabel.setText("");
+            } catch (IOException e) {
+                deckPictureLabel.setText("Deck Image could not load");
+            }
+        }
     }
 }

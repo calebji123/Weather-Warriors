@@ -1,18 +1,77 @@
 How to play:
 
 You have an active card and a deck of inactive cards. On the bottom right you can see the next card in the deck.
-
 You can either attack with your active card or swap it with the next card in the deck.
-
 Each card has two moves: a basic move and a special move.
-
 The special move is modified by the weather. The weather is queried based on the location chosen, which is chosen at random at the beginning of the game and after every three moves
-
 The weather and temperature as well as the next location is shown in the top left.
-
 All the turn actions are in the bottom left.
-
 The game ends when you run out of cards in your deck or you defeat the boss.
-
 After every turn the boss moves by doing one of its attacks.
 
+Weather Modifications:
+modified temperature = temperature / 2 - 5
+modified humidity = humidity / 5 - 10
+
+Glossary of cards:
+Capybara:
+HP: 30
+Attack: 14
+Special Attack: 14 + 3 * modified humidity
+
+Swine:
+HP: 60
+Attack: 15
+Special Attack: 15 + 5 * modified temperature
+
+Mosquito:
+HP: 10
+Attack: 20
+Special Attack: 20 + 9 * modified humidity
+
+Osprey:
+HP: 20
+Attack: 15
+Special Attack: 15 + -5 * modified humidity
+
+Blue Whale
+HP: 100
+Attack: 5
+Special Attack: 5 + 6 * modified humidity
+
+Polar Bear
+HP: 30
+Attack: 14
+Special Attack: 14 + -4 * modified temperature
+
+Scorpion
+HP: 16
+Attack: 12
+Special Attack: 12 + -5 * modified humidity
+
+Emperor Penguin
+HP: 25
+Attack: 7
+Special Attack: 7 + -3 * modified temperature
+
+Jaguar
+HP: 28
+Attack: 17
+Special Attack: 17 + 4 * modified temperature
+
+Jim
+HP: 20
+Attack: 2
+Special Attack: 2 + 0 * modified temperature
+
+Bosses:
+Time Travelling Poacher:
+HP: 500
+Attacks:
+    pass: 1
+    big attack: 20
+    small attack: 5
+Special Attacks:
+    fireball: 10 + 4 * modified temperature
+    ice storm: 10 + -4 * modified temperature
+    waterfall: 10 + 4 * modified humidity
