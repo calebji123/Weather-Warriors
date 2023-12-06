@@ -39,9 +39,9 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     private final GameViewModel gameViewModel;
     private final JButton exit;
     private final JButton information;
-    final JButton attack;
-    final JButton specialAttack;
-    final JButton swap;
+    private final JButton attack;
+    private final JButton specialAttack;
+    private final JButton swap;
     private final JLabel enemyHealth;
     private final JLabel playerHealth;
     private final JLabel playerName;
