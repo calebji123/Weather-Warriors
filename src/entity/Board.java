@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.ArrayList;
+
 public class Board {
     private Deck deck;
     private Opponent opponent;
@@ -36,5 +38,9 @@ public class Board {
     public void setTurn(Integer turn){
         this.turn = turn;
     }
-
+    public void printCards(){
+        for(Card card : deck){
+            System.out.println(card);
+        }
+    }
 }
