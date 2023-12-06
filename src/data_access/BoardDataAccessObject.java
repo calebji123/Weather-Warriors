@@ -64,7 +64,7 @@ public class BoardDataAccessObject implements EndTurnDataAccessInterface, Attack
         Random rand = new Random();
         ArrayList<Card> cards = new ArrayList<>();
         for (int i = 9; i >=5; i--){
-            cards.add(cardList.get(rand.nextInt(i)).cloneCard());
+            cards.add(cardList.remove(rand.nextInt(i)).cloneCard());
         }
         Deck deck = new Deck(cards);
         Opponent enemy = new TimeTravelingPoacher();
