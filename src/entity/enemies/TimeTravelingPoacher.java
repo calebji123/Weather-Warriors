@@ -13,7 +13,6 @@ public class TimeTravelingPoacher implements Opponent {
     private List<SpecialAttack> bossMoves = new ArrayList<>();
     private SpecialAttack lastMove;
     private Integer HP = 500;
-    private final String imageFilePath = ".jpg";
 
 
 
@@ -23,17 +22,17 @@ public class TimeTravelingPoacher implements Opponent {
         this.bossMoves.add(pass);
         SpecialAttack bigAttack = new SpecialAttack(20, 0);
         this.bossMoves.add(bigAttack);
-        this.bossMoves.add(bigAttack);
         SpecialAttack smallAttack = new SpecialAttack(5,0);
         this.bossMoves.add(smallAttack);
         this.bossMoves.add(smallAttack);
-        SpecialAttack fireball = new SpecialAttack(10, 13);
+        this.bossMoves.add(smallAttack);
+        SpecialAttack fireball = new SpecialAttack(10, 14);
         this.bossMoves.add(fireball);
-        SpecialAttack iceStorm = new SpecialAttack(10, 63);
+        SpecialAttack iceStorm = new SpecialAttack(10, 64);
         this.bossMoves.add(iceStorm);
 //        SpecialAttack gustBlast = new SpecialAttack(10, 1);
   //      this.bossMoves.add(gustBlast);
-        SpecialAttack waterFall = new SpecialAttack(10, 23);
+        SpecialAttack waterFall = new SpecialAttack(10, 24);
         this.bossMoves.add(waterFall);
     }
     public SpecialAttack getAttack(){
@@ -45,6 +44,5 @@ public class TimeTravelingPoacher implements Opponent {
 
     public Integer getHP(){return HP;}
     public void changeHP(Integer dmg){HP -= dmg;}
-    public String getImageFilePath(){return imageFilePath;}
 
 }
