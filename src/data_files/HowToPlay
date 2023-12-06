@@ -17,7 +17,7 @@ Glossary of cards:
 Capybara:
 HP: 30
 Attack: 14
-Special Attack: 14 + 3 * modified humidity
+Special Attack: 14 + 3 * modified temperature
 
 Swine:
 HP: 60
