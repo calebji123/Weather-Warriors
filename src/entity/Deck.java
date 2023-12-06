@@ -18,8 +18,6 @@ public class Deck {
             this.next = deck.get(1);
             this.next.makeNext();
         }
-        System.out.println("active: " + this.active.getCardName());
-        System.out.println("next: " + this.next.getCardName());
     }
 
     public int getDeckSize(){return deckSize;}
