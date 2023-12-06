@@ -17,9 +17,9 @@ public class MenuView extends JPanel implements ActionListener, PropertyChangeLi
     private final HowToPlayViewModel howToPlayViewModel;
     private final HowToPlayController howToPlayController;
     private final StartController startController;
-    private final JButton howToPlay;
+     final JButton howToPlay;
     private final JButton howToPlayFrench;
-    private final JButton start;
+     final JButton start;
 
     public MenuView(HowToPlayController howToPlayController, HowToPlayViewModel howToPlayViewModel, StartController startController) {
         this.howToPlayController = howToPlayController;

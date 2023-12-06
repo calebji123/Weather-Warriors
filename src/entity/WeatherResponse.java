@@ -14,7 +14,6 @@ public class WeatherResponse {
     private int dt;
     private int timezone;
     private int id;
-    private Rain rain;
     private String name;
     private int cod;
     public static class Coord {
@@ -154,24 +153,6 @@ public class WeatherResponse {
             return all;
         }
     }
-
-    public static class Rain {
-        private String duration;
-        private Double depth;
-        public void setDuration(String duration){
-            this.duration = duration;
-        }
-        public void setDepth(Double depth){
-            this.depth = depth;
-        }
-        public String getDuration(){
-            return this.duration;
-        }
-        public Double getDepth(){
-            return this.depth;
-        }
-    }
-
 
     public void setCoord(Coord coord) {
         this.coord = coord;

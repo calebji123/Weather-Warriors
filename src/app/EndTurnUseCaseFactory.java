@@ -2,7 +2,6 @@ package app;
 
 import interface_adaptor.end_turn.EndTurnController;
 import interface_adaptor.end_turn.EndTurnPresenter;
-import interface_adaptor.end_turn.EndTurnViewModel;
 import interface_adaptor.game.GameViewModel;
 import use_case.end_turn.EndTurnDataAccessInterface;
 import use_case.end_turn.EndTurnInputBoundary;
