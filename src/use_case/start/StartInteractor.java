@@ -20,7 +20,7 @@ public class StartInteractor implements StartInputBoundary {
         Deck deck = board.getDeck();
         Card active = deck.getActive();
         Location location = board.getLocation();
-        StartOutputData startOutputData = new StartOutputData(active.getCardName(), active.getHP(), board.getOpponent().getHP(), deck.getNext().getCardName(), location.getLocationName(), location.getTemperature(), location.getNextLocationName());
+        StartOutputData startOutputData = new StartOutputData(active.getCardName(), active.getHP(), board.getOpponent().getHP(), deck.getNext().getCardName(), location.getLocationName(), location.getTemperature(), location.getNextLocationName(), location.getHumidity());
         presenter.prepareSuccessView(startOutputData);
     }
 }
