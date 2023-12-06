@@ -1,5 +1,11 @@
 package use_case.start;
+import data_access.StartDataAccessObject;
 import entity.*;
+import entity.enemies.TimeTravelingPoacher;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class StartInteractor implements StartInputBoundary {
     //call data access objects for relevant info

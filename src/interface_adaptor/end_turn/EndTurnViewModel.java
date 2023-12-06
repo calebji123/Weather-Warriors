@@ -1,16 +1,24 @@
-package interface_adaptor.exit;
+package interface_adaptor.end_turn;
 
 import interface_adaptor.ViewModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ExitViewModel extends ViewModel {
-    public final String TITLE_LABEL = "menu";
-    public final String EXIT_BUTTON_LABEL = "Exit";
-    private ExitState state = new ExitState();
-    public ExitViewModel() {super("menu");}
-    public void setState(ExitState state) {this.state = state;}
+public class EndTurnViewModel extends ViewModel {
+    private EndTurnState state;
+
+    public EndTurnViewModel() {
+        super("end_turn");
+    }
+
+    public EndTurnState getState() {
+        return state;
+    }
+
+    public void setState(EndTurnState state) {
+        this.state = state;
+    }
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -21,6 +29,4 @@ public class ExitViewModel extends ViewModel {
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
-
-    public ExitState getState() {return state;}
 }

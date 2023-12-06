@@ -3,6 +3,7 @@ package app;
 import data_access.BoardDataAccessObject;
 import data_access.HowToPlayDataAccess;
 import interface_adaptor.ViewManagerModel;
+import interface_adaptor.end_turn.EndTurnViewModel;
 import interface_adaptor.exit.ExitViewModel;
 import interface_adaptor.game.GameViewModel;
 import interface_adaptor.how_to_play.HowToPlayViewModel;
