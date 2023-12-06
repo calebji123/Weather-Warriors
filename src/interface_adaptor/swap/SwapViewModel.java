@@ -1,7 +1,6 @@
 package interface_adaptor.swap;
 
 import interface_adaptor.ViewModel;
-import interface_adaptor.attack.AttackState;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

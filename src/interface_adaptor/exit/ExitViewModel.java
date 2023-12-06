@@ -5,22 +5,14 @@ import interface_adaptor.ViewModel;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class ExitViewModel extends ViewModel {
-    public final String TITLE_LABEL = "menu";
-    public final String EXIT_BUTTON_LABEL = "Exit";
-    private ExitState state = new ExitState();
-    public ExitViewModel() {super("menu");}
-    public void setState(ExitState state) {this.state = state;}
+public class ExitViewModel {
+    private final String viewName;
 
-    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
-
-    public void firePropertyChanged() {
-        support.firePropertyChange("state", null, this.state);
+    public ExitViewModel() {
+        this.viewName = "menu";
     }
 
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        support.addPropertyChangeListener(listener);
+    public String getViewName() {
+        return viewName;
     }
-
-    public ExitState getState() {return state;}
 }

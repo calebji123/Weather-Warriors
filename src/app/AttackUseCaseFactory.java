@@ -2,7 +2,6 @@ package app;
 
 import interface_adaptor.attack.AttackController;
 import interface_adaptor.attack.AttackPresenter;
-import interface_adaptor.attack.AttackViewModel;
 import interface_adaptor.game.GameViewModel;
 import use_case.attack.AttackDataAccessInterface;
 import use_case.attack.AttackInputBoundary;

@@ -37,7 +37,7 @@ public class SwapInteractorTest {
         list.add(card2);
         deck = new Deck(list);
         board = new Board(deck, opponent, new Location("Uoft", 0.0, 0.0, 0, 0,
-                "UTM"));
+                "UTM", 0.0, 0.0));
 
         class MockDataAccess implements SwapDataAccessInterface {
             @Override
