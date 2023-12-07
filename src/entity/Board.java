@@ -37,4 +37,18 @@ public class Board {
         this.turn = turn;
     }
 
+    public void changeCardHealth(Integer health){
+        this.deck.getActive().setHP(health);
+    }
+    public void changeOpponentHealth(Integer health){
+        this.opponent.changeHP(health);
+    }
+    public void getModifiedHumidity(){
+        this.location.getModifiedHumidity();
+    }
+    public void getModifiedTemperature(){
+        this.location.getModifiedTemperature();
+    }
+
+
 }

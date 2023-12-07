@@ -25,6 +25,8 @@ public class StartPresenter implements StartOutputBoundary {
         gameState.setHumidity(outputData.getHumidity());
         gameState.setNextLocation(outputData.getNextLocation());
         gameState.setGameOver(false);
+        gameState.setDeckSize(5);
+        gameState.setLog("");
         gameViewModel.setState(gameState);
         gameViewModel.firePropertyChanged();
         viewManagerModel.setCurrentView(gameViewModel.getViewName());

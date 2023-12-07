@@ -12,7 +12,7 @@ import java.util.Random;
 public class TimeTravelingPoacher implements Opponent {
     private List<SpecialAttack> bossMoves = new ArrayList<>();
     private SpecialAttack lastMove;
-    private Integer HP = 400;
+    private Integer HP = 100;
 
 
 
