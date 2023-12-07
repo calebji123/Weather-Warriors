@@ -1,8 +1,11 @@
 package entity;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Random;
-public class Deck {
+import java.util.Iterator;
+
+public class Deck implements Iterable<Card> {
     private List<Card> deck;
     private Card active;
     private Card next;
@@ -51,5 +54,38 @@ public class Deck {
             this.next = null;
         }
     }
+    public Card getCard(int i){
+        if (i < this.deckSize){
+            return this.deck.get(i);
+        }
+        else {
+            return null;
+        }
+    }
+
+    public Iterator<Card> iterator() {
+        return new Deck.Iter(this);
+    }
+    private class Iter implements Iterator<Card>{
+        private int index = 0;
+        private final Deck deck;
+        private Iter(Deck deck){
+            this.deck = deck;
+        }
+        @Override
+        public boolean hasNext() {
+            return index < deck.getDeckSize();
+        }
+        @Override
+        public Card next() {
+            if (hasNext()) {
+                return deck.getCard(index++);
+            }
+            else {
+                throw new NoSuchElementException();
+            }
+        }
+    }
 
 }
+
