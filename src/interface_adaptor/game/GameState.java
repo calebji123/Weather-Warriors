@@ -68,11 +68,19 @@ public class GameState {
     }
 
     public void setActiveCardHealth(Integer activeCardHealth) {
-        this.activeCardHealth = activeCardHealth;
+        if (activeCardHealth < 0) {
+            this.activeCardHealth = 0;
+        } else {
+            this.activeCardHealth = activeCardHealth;
+        }
     }
 
     public void setOpponentCardHealth(Integer opponentCardHealth) {
-        this.opponentCardHealth = opponentCardHealth;
+        if (opponentCardHealth < 0) {
+            this.opponentCardHealth = 0;
+        } else {
+            this.opponentCardHealth = opponentCardHealth;
+        }
     }
 
     public void setNextCardName(String nextCardName) {

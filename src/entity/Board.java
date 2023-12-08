@@ -49,6 +49,14 @@ public class Board {
     public void getModifiedTemperature(){
         this.location.getModifiedTemperature();
     }
+    public String getCardsLog(){
+        StringBuilder log = new StringBuilder("Cards in dexk:\r\n");
+        for (Card card : this.deck){
+            log.append(card.getCardName());
+            log.append("\r\n");
+        }
+        return log.toString();
+    }
 
 
 }

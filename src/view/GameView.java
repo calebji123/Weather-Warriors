@@ -315,40 +315,45 @@ public class GameView extends JPanel implements ActionListener, PropertyChangeLi
     private void setFields(GameState state) {
         locationLabel.setText(state.getLocation());
         nextLocationLabel.setText("Next location: " + state.getNextLocation());
-        playerName.setText(state.getActiveCardName());
         playerHealth.setText(state.getActiveCardHealth().toString() + " hp");
         enemyHealth.setText(state.getOpponentCardHealth().toString() + " hp");
-        nextLabel.setText("Next: " + state.getNextCardName());
         temperature.setText("Temperature: " + state.getTemperature());
         humidity.setText("Humidity: " + state.getHumidity());
         logText.setText(state.getLog());
         deckLabel.setText("Deck: " + state.getDeckSize() + " cards");
-        try {
-            BufferedImage playerPicture = ImageIO.read(new File("src/assets/"+state.getActiveCardName()+".jpg"));
-            playerPictureLabel.setIcon(new ImageIcon(playerPicture
-                    .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-            playerPictureLabel.setText("");
-        } catch (IOException e) {
-            playerPictureLabel.setText("Player Image could not load");
-        }
-        if (!Objects.equals(state.getNextCardName(), "No cards left")) {
+        if (!Objects.equals(playerName.getText(), state.getActiveCardName())) {
+            playerName.setText(state.getActiveCardName());
             try {
-                BufferedImage nextPicture = ImageIO.read(new File("src/assets/"+state.getNextCardName()+".jpg"));
-                deckPictureLabel.setIcon(new ImageIcon(nextPicture
+                BufferedImage playerPicture = ImageIO.read(new File("src/assets/"+state.getActiveCardName()+".jpg"));
+                playerPictureLabel.setIcon(new ImageIcon(playerPicture
                         .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-                deckPictureLabel.setText("");
+                playerPictureLabel.setText("");
             } catch (IOException e) {
-                deckPictureLabel.setText("Deck Image could not load");
-            }
-        } else {
-            try {
-                BufferedImage nextPicture = ImageIO.read(new File("src/assets/deck.png"));
-                deckPictureLabel.setIcon(new ImageIcon(nextPicture
-                        .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-                deckPictureLabel.setText("");
-            } catch (IOException e) {
-                deckPictureLabel.setText("Deck Image could not load");
+                playerPictureLabel.setText("Player Image could not load");
             }
         }
+        if (!Objects.equals(nextLabel.getText(), "Next: " + state.getNextCardName())) {
+            nextLabel.setText("Next: " + state.getNextCardName());
+            if (!Objects.equals(state.getNextCardName(), "No cards left")) {
+                try {
+                    BufferedImage nextPicture = ImageIO.read(new File("src/assets/"+state.getNextCardName()+".jpg"));
+                    deckPictureLabel.setIcon(new ImageIcon(nextPicture
+                            .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    deckPictureLabel.setText("");
+                } catch (IOException e) {
+                    deckPictureLabel.setText("Deck Image could not load");
+                }
+            } else {
+                try {
+                    BufferedImage nextPicture = ImageIO.read(new File("src/assets/deck.png"));
+                    deckPictureLabel.setIcon(new ImageIcon(nextPicture
+                            .getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
+                    deckPictureLabel.setText("");
+                } catch (IOException e) {
+                    deckPictureLabel.setText("Deck Image could not load");
+                }
+            }
+        }
+
     }
 }
